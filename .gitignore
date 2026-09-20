@@ -50,3 +50,6 @@ Thumbs.db
 *.tgz
 *.log
 .streamlit/secrets.toml
+
+# Bounded local training checks, separate from published results.
+artifacts/dry_runs/
