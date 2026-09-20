@@ -38,8 +38,14 @@ training:
   learning_rate: 0.001
   weight_decay: 0.0001
   batch_size: 256
-  max_epochs: 80
+  # Expert ceiling: the graph expert's best epoch reached 59/70 with patience
+  # firing, so give text/time/graph headroom to 250. Early stopping on
+  # validation AP still ends training; the ceiling only binds while val is
+  # still improving. Fusion keeps its own ceiling below (it already overfits).
+  max_epochs: 250
   patience: 10
+  fusion_max_epochs: 80
+  fusion_patience: 10
   checkpoint_metric: validation_ap
   seeds: [17, 42, 73]
 

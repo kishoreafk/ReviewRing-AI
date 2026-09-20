@@ -95,7 +95,7 @@ def test_cli_loads_shared_training_defaults():
     config = resolve_config('configs/amazon_replay.yaml')
     assert config['training']['pos_weight_cap'] == 100
     assert config['training']['fanout_per_relation'] == [10, 5]
-    assert config['training']['max_epochs'] == 80
+    assert config['training']['max_epochs'] == 250
 
 
 def test_track_a_provenance_without_raw_download(tmp_path):
