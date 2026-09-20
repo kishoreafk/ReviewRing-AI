@@ -1,0 +1,3965 @@
+{
+  "detected_campaigns": 24,
+  "detection_recall": 1.0,
+  "first_alert_delay_days": {
+    "sim-test-c000": 1.0,
+    "sim-test-c001": 0.0,
+    "sim-test-c002": 0.0,
+    "sim-test-c003": 0.0,
+    "sim-test-c004": 1.0,
+    "sim-test-c005": 0.0,
+    "sim-test-c006": 0.0,
+    "sim-test-c007": 0.0,
+    "sim-test-c008": 0.0,
+    "sim-test-c009": 0.0,
+    "sim-test-c010": 1.0,
+    "sim-test-c011": 0.0,
+    "sim-test-c012": 0.0,
+    "sim-test-c013": 0.0,
+    "sim-test-c014": 0.0,
+    "sim-test-c015": 0.0,
+    "sim-test-c016": 0.0,
+    "sim-test-c017": 0.0,
+    "sim-test-c018": 1.0,
+    "sim-test-c019": 0.0,
+    "sim-test-c020": 0.0,
+    "sim-test-c021": 3.0,
+    "sim-test-c022": 0.0,
+    "sim-test-c023": 0.0
+  },
+  "mean_delay_detected_only": 0.2916666666666667,
+  "planted_campaigns": 24,
+  "recall_at_1d": 0.9583333333333334,
+  "recall_at_30d": 1.0,
+  "recall_at_7d": 1.0,
+  "steps": [
+    {
+      "alerts": 1,
+      "day": "2022-01-14",
+      "n_scored": 4,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 7,
+      "day": "2022-01-15",
+      "n_scored": 15,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 5,
+      "day": "2022-01-16",
+      "n_scored": 11,
+      "planted_alerted": 0,
+      "planted_scored": 1
+    },
+    {
+      "alerts": 9,
+      "day": "2022-01-17",
+      "n_scored": 20,
+      "planted_alerted": 7,
+      "planted_scored": 12
+    },
+    {
+      "alerts": 4,
+      "day": "2022-01-18",
+      "n_scored": 8,
+      "planted_alerted": 0,
+      "planted_scored": 1
+    },
+    {
+      "alerts": 10,
+      "day": "2022-01-19",
+      "n_scored": 16,
+      "planted_alerted": 5,
+      "planted_scored": 5
+    },
+    {
+      "alerts": 7,
+      "day": "2022-01-20",
+      "n_scored": 17,
+      "planted_alerted": 3,
+      "planted_scored": 5
+    },
+    {
+      "alerts": 3,
+      "day": "2022-01-21",
+      "n_scored": 6,
+      "planted_alerted": 3,
+      "planted_scored": 3
+    },
+    {
+      "alerts": 7,
+      "day": "2022-01-22",
+      "n_scored": 17,
+      "planted_alerted": 2,
+      "planted_scored": 5
+    },
+    {
+      "alerts": 3,
+      "day": "2022-01-23",
+      "n_scored": 6,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 5,
+      "day": "2022-01-24",
+      "n_scored": 7,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 4,
+      "day": "2022-01-25",
+      "n_scored": 7,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-01-26",
+      "n_scored": 5,
+      "planted_alerted": 1,
+      "planted_scored": 2
+    },
+    {
+      "alerts": 2,
+      "day": "2022-01-27",
+      "n_scored": 9,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-01-28",
+      "n_scored": 6,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 5,
+      "day": "2022-01-29",
+      "n_scored": 17,
+      "planted_alerted": 1,
+      "planted_scored": 5
+    },
+    {
+      "alerts": 2,
+      "day": "2022-01-30",
+      "n_scored": 4,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-01-31",
+      "n_scored": 13,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 31,
+      "day": "2022-02-01",
+      "n_scored": 49,
+      "planted_alerted": 28,
+      "planted_scored": 39
+    },
+    {
+      "alerts": 2,
+      "day": "2022-02-02",
+      "n_scored": 9,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-02-03",
+      "n_scored": 12,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 3,
+      "day": "2022-02-04",
+      "n_scored": 7,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 5,
+      "day": "2022-02-05",
+      "n_scored": 19,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2022-02-06",
+      "n_scored": 8,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-02-07",
+      "n_scored": 5,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2022-02-08",
+      "n_scored": 10,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 7,
+      "day": "2022-02-09",
+      "n_scored": 12,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 7,
+      "day": "2022-02-10",
+      "n_scored": 16,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 4,
+      "day": "2022-02-11",
+      "n_scored": 11,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 4,
+      "day": "2022-02-12",
+      "n_scored": 12,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-02-13",
+      "n_scored": 4,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-02-14",
+      "n_scored": 6,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-02-15",
+      "n_scored": 5,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 9,
+      "day": "2022-02-16",
+      "n_scored": 17,
+      "planted_alerted": 1,
+      "planted_scored": 1
+    },
+    {
+      "alerts": 6,
+      "day": "2022-02-17",
+      "n_scored": 13,
+      "planted_alerted": 3,
+      "planted_scored": 3
+    },
+    {
+      "alerts": 1,
+      "day": "2022-02-18",
+      "n_scored": 8,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 6,
+      "day": "2022-02-19",
+      "n_scored": 9,
+      "planted_alerted": 1,
+      "planted_scored": 1
+    },
+    {
+      "alerts": 7,
+      "day": "2022-02-20",
+      "n_scored": 10,
+      "planted_alerted": 5,
+      "planted_scored": 5
+    },
+    {
+      "alerts": 3,
+      "day": "2022-02-21",
+      "n_scored": 8,
+      "planted_alerted": 1,
+      "planted_scored": 1
+    },
+    {
+      "alerts": 4,
+      "day": "2022-02-22",
+      "n_scored": 7,
+      "planted_alerted": 3,
+      "planted_scored": 3
+    },
+    {
+      "alerts": 3,
+      "day": "2022-02-23",
+      "n_scored": 7,
+      "planted_alerted": 2,
+      "planted_scored": 2
+    },
+    {
+      "alerts": 5,
+      "day": "2022-02-24",
+      "n_scored": 8,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 3,
+      "day": "2022-02-25",
+      "n_scored": 11,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 3,
+      "day": "2022-02-26",
+      "n_scored": 13,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-02-27",
+      "n_scored": 4,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-02-28",
+      "n_scored": 8,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2022-03-01",
+      "n_scored": 8,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 4,
+      "day": "2022-03-02",
+      "n_scored": 10,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 4,
+      "day": "2022-03-03",
+      "n_scored": 10,
+      "planted_alerted": 1,
+      "planted_scored": 1
+    },
+    {
+      "alerts": 2,
+      "day": "2022-03-04",
+      "n_scored": 6,
+      "planted_alerted": 1,
+      "planted_scored": 1
+    },
+    {
+      "alerts": 4,
+      "day": "2022-03-05",
+      "n_scored": 9,
+      "planted_alerted": 2,
+      "planted_scored": 2
+    },
+    {
+      "alerts": 4,
+      "day": "2022-03-06",
+      "n_scored": 13,
+      "planted_alerted": 1,
+      "planted_scored": 1
+    },
+    {
+      "alerts": 1,
+      "day": "2022-03-07",
+      "n_scored": 6,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 3,
+      "day": "2022-03-08",
+      "n_scored": 8,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 3,
+      "day": "2022-03-09",
+      "n_scored": 10,
+      "planted_alerted": 3,
+      "planted_scored": 3
+    },
+    {
+      "alerts": 4,
+      "day": "2022-03-10",
+      "n_scored": 8,
+      "planted_alerted": 1,
+      "planted_scored": 2
+    },
+    {
+      "alerts": 1,
+      "day": "2022-03-11",
+      "n_scored": 4,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-03-12",
+      "n_scored": 6,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 4,
+      "day": "2022-03-13",
+      "n_scored": 7,
+      "planted_alerted": 1,
+      "planted_scored": 1
+    },
+    {
+      "alerts": 1,
+      "day": "2022-03-14",
+      "n_scored": 5,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-03-15",
+      "n_scored": 3,
+      "planted_alerted": 2,
+      "planted_scored": 2
+    },
+    {
+      "alerts": 6,
+      "day": "2022-03-16",
+      "n_scored": 11,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-03-17",
+      "n_scored": 6,
+      "planted_alerted": 1,
+      "planted_scored": 1
+    },
+    {
+      "alerts": 5,
+      "day": "2022-03-18",
+      "n_scored": 10,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 3,
+      "day": "2022-03-19",
+      "n_scored": 12,
+      "planted_alerted": 1,
+      "planted_scored": 1
+    },
+    {
+      "alerts": 2,
+      "day": "2022-03-20",
+      "n_scored": 8,
+      "planted_alerted": 1,
+      "planted_scored": 1
+    },
+    {
+      "alerts": 2,
+      "day": "2022-03-21",
+      "n_scored": 9,
+      "planted_alerted": 1,
+      "planted_scored": 1
+    },
+    {
+      "alerts": 2,
+      "day": "2022-03-22",
+      "n_scored": 6,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 3,
+      "day": "2022-03-23",
+      "n_scored": 11,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-03-24",
+      "n_scored": 8,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 6,
+      "day": "2022-03-25",
+      "n_scored": 15,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 3,
+      "day": "2022-03-26",
+      "n_scored": 8,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2022-03-27",
+      "n_scored": 4,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 3,
+      "day": "2022-03-28",
+      "n_scored": 6,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 3,
+      "day": "2022-03-29",
+      "n_scored": 10,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2022-03-30",
+      "n_scored": 3,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 3,
+      "day": "2022-03-31",
+      "n_scored": 6,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2022-04-01",
+      "n_scored": 4,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 5,
+      "day": "2022-04-02",
+      "n_scored": 11,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-04-03",
+      "n_scored": 10,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 4,
+      "day": "2022-04-04",
+      "n_scored": 8,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 8,
+      "day": "2022-04-05",
+      "n_scored": 14,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 3,
+      "day": "2022-04-06",
+      "n_scored": 11,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-04-07",
+      "n_scored": 11,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-04-08",
+      "n_scored": 8,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 4,
+      "day": "2022-04-09",
+      "n_scored": 7,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 3,
+      "day": "2022-04-10",
+      "n_scored": 9,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 7,
+      "day": "2022-04-11",
+      "n_scored": 12,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-04-12",
+      "n_scored": 8,
+      "planted_alerted": 1,
+      "planted_scored": 3
+    },
+    {
+      "alerts": 2,
+      "day": "2022-04-13",
+      "n_scored": 9,
+      "planted_alerted": 1,
+      "planted_scored": 1
+    },
+    {
+      "alerts": 1,
+      "day": "2022-04-14",
+      "n_scored": 5,
+      "planted_alerted": 1,
+      "planted_scored": 1
+    },
+    {
+      "alerts": 3,
+      "day": "2022-04-15",
+      "n_scored": 9,
+      "planted_alerted": 1,
+      "planted_scored": 1
+    },
+    {
+      "alerts": 4,
+      "day": "2022-04-16",
+      "n_scored": 11,
+      "planted_alerted": 1,
+      "planted_scored": 1
+    },
+    {
+      "alerts": 3,
+      "day": "2022-04-17",
+      "n_scored": 8,
+      "planted_alerted": 1,
+      "planted_scored": 1
+    },
+    {
+      "alerts": 1,
+      "day": "2022-04-18",
+      "n_scored": 5,
+      "planted_alerted": 1,
+      "planted_scored": 1
+    },
+    {
+      "alerts": 3,
+      "day": "2022-04-19",
+      "n_scored": 7,
+      "planted_alerted": 2,
+      "planted_scored": 2
+    },
+    {
+      "alerts": 7,
+      "day": "2022-04-20",
+      "n_scored": 11,
+      "planted_alerted": 4,
+      "planted_scored": 4
+    },
+    {
+      "alerts": 1,
+      "day": "2022-04-21",
+      "n_scored": 10,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2022-04-22",
+      "n_scored": 3,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2022-04-23",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 9,
+      "day": "2022-04-24",
+      "n_scored": 12,
+      "planted_alerted": 4,
+      "planted_scored": 5
+    },
+    {
+      "alerts": 2,
+      "day": "2022-04-25",
+      "n_scored": 12,
+      "planted_alerted": 2,
+      "planted_scored": 2
+    },
+    {
+      "alerts": 5,
+      "day": "2022-04-26",
+      "n_scored": 13,
+      "planted_alerted": 3,
+      "planted_scored": 3
+    },
+    {
+      "alerts": 4,
+      "day": "2022-04-27",
+      "n_scored": 13,
+      "planted_alerted": 2,
+      "planted_scored": 4
+    },
+    {
+      "alerts": 3,
+      "day": "2022-04-28",
+      "n_scored": 5,
+      "planted_alerted": 2,
+      "planted_scored": 2
+    },
+    {
+      "alerts": 5,
+      "day": "2022-04-29",
+      "n_scored": 7,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-04-30",
+      "n_scored": 7,
+      "planted_alerted": 1,
+      "planted_scored": 3
+    },
+    {
+      "alerts": 1,
+      "day": "2022-05-01",
+      "n_scored": 3,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-05-02",
+      "n_scored": 10,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 5,
+      "day": "2022-05-03",
+      "n_scored": 15,
+      "planted_alerted": 2,
+      "planted_scored": 3
+    },
+    {
+      "alerts": 3,
+      "day": "2022-05-04",
+      "n_scored": 9,
+      "planted_alerted": 1,
+      "planted_scored": 1
+    },
+    {
+      "alerts": 3,
+      "day": "2022-05-05",
+      "n_scored": 9,
+      "planted_alerted": 1,
+      "planted_scored": 1
+    },
+    {
+      "alerts": 7,
+      "day": "2022-05-06",
+      "n_scored": 17,
+      "planted_alerted": 6,
+      "planted_scored": 10
+    },
+    {
+      "alerts": 6,
+      "day": "2022-05-07",
+      "n_scored": 10,
+      "planted_alerted": 5,
+      "planted_scored": 6
+    },
+    {
+      "alerts": 5,
+      "day": "2022-05-08",
+      "n_scored": 8,
+      "planted_alerted": 5,
+      "planted_scored": 6
+    },
+    {
+      "alerts": 8,
+      "day": "2022-05-09",
+      "n_scored": 20,
+      "planted_alerted": 7,
+      "planted_scored": 8
+    },
+    {
+      "alerts": 12,
+      "day": "2022-05-10",
+      "n_scored": 16,
+      "planted_alerted": 8,
+      "planted_scored": 9
+    },
+    {
+      "alerts": 8,
+      "day": "2022-05-11",
+      "n_scored": 16,
+      "planted_alerted": 4,
+      "planted_scored": 5
+    },
+    {
+      "alerts": 7,
+      "day": "2022-05-12",
+      "n_scored": 9,
+      "planted_alerted": 3,
+      "planted_scored": 3
+    },
+    {
+      "alerts": 2,
+      "day": "2022-05-13",
+      "n_scored": 8,
+      "planted_alerted": 0,
+      "planted_scored": 1
+    },
+    {
+      "alerts": 2,
+      "day": "2022-05-14",
+      "n_scored": 5,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2022-05-15",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-05-16",
+      "n_scored": 3,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-05-17",
+      "n_scored": 6,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-05-18",
+      "n_scored": 6,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 3,
+      "day": "2022-05-19",
+      "n_scored": 8,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-05-20",
+      "n_scored": 4,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-05-21",
+      "n_scored": 4,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-05-22",
+      "n_scored": 4,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-05-23",
+      "n_scored": 5,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-05-24",
+      "n_scored": 13,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-05-25",
+      "n_scored": 8,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-05-26",
+      "n_scored": 3,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-05-27",
+      "n_scored": 7,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-05-28",
+      "n_scored": 1,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-05-29",
+      "n_scored": 5,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2022-05-30",
+      "n_scored": 4,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2022-05-31",
+      "n_scored": 3,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 3,
+      "day": "2022-06-01",
+      "n_scored": 8,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 3,
+      "day": "2022-06-02",
+      "n_scored": 11,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-06-03",
+      "n_scored": 10,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-06-04",
+      "n_scored": 8,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-06-05",
+      "n_scored": 14,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-06-06",
+      "n_scored": 10,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-06-07",
+      "n_scored": 6,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-06-08",
+      "n_scored": 9,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-06-09",
+      "n_scored": 5,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-06-10",
+      "n_scored": 4,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-06-11",
+      "n_scored": 5,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-06-12",
+      "n_scored": 4,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-06-13",
+      "n_scored": 7,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-06-14",
+      "n_scored": 7,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 3,
+      "day": "2022-06-15",
+      "n_scored": 10,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2022-06-16",
+      "n_scored": 4,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 4,
+      "day": "2022-06-17",
+      "n_scored": 7,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-06-18",
+      "n_scored": 6,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 3,
+      "day": "2022-06-19",
+      "n_scored": 10,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 5,
+      "day": "2022-06-20",
+      "n_scored": 8,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-06-21",
+      "n_scored": 9,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 5,
+      "day": "2022-06-22",
+      "n_scored": 16,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2022-06-23",
+      "n_scored": 8,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 5,
+      "day": "2022-06-24",
+      "n_scored": 16,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-06-25",
+      "n_scored": 9,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2022-06-26",
+      "n_scored": 7,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-06-27",
+      "n_scored": 5,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-06-28",
+      "n_scored": 8,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 3,
+      "day": "2022-06-29",
+      "n_scored": 7,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-06-30",
+      "n_scored": 11,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2022-07-01",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-07-02",
+      "n_scored": 8,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-07-03",
+      "n_scored": 4,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2022-07-04",
+      "n_scored": 3,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-07-05",
+      "n_scored": 10,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2022-07-06",
+      "n_scored": 5,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2022-07-07",
+      "n_scored": 5,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2022-07-08",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 3,
+      "day": "2022-07-09",
+      "n_scored": 7,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2022-07-10",
+      "n_scored": 1,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 3,
+      "day": "2022-07-11",
+      "n_scored": 6,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-07-12",
+      "n_scored": 5,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-07-13",
+      "n_scored": 17,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-07-14",
+      "n_scored": 5,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-07-15",
+      "n_scored": 13,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2022-07-16",
+      "n_scored": 9,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2022-07-17",
+      "n_scored": 8,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 6,
+      "day": "2022-07-18",
+      "n_scored": 14,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 4,
+      "day": "2022-07-19",
+      "n_scored": 8,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-07-20",
+      "n_scored": 6,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-07-21",
+      "n_scored": 5,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 7,
+      "day": "2022-07-22",
+      "n_scored": 17,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-07-23",
+      "n_scored": 21,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-07-24",
+      "n_scored": 3,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-07-25",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-07-26",
+      "n_scored": 5,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 4,
+      "day": "2022-07-27",
+      "n_scored": 9,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 3,
+      "day": "2022-07-28",
+      "n_scored": 11,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-07-29",
+      "n_scored": 10,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-07-30",
+      "n_scored": 5,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2022-07-31",
+      "n_scored": 4,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-08-01",
+      "n_scored": 9,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2022-08-02",
+      "n_scored": 5,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 4,
+      "day": "2022-08-03",
+      "n_scored": 10,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-08-04",
+      "n_scored": 7,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 3,
+      "day": "2022-08-05",
+      "n_scored": 5,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-08-06",
+      "n_scored": 11,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 5,
+      "day": "2022-08-07",
+      "n_scored": 10,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-08-08",
+      "n_scored": 5,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 4,
+      "day": "2022-08-09",
+      "n_scored": 13,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-08-10",
+      "n_scored": 3,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-08-11",
+      "n_scored": 4,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 3,
+      "day": "2022-08-12",
+      "n_scored": 11,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-08-13",
+      "n_scored": 6,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 5,
+      "day": "2022-08-14",
+      "n_scored": 8,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-08-15",
+      "n_scored": 5,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-08-16",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2022-08-17",
+      "n_scored": 7,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 4,
+      "day": "2022-08-18",
+      "n_scored": 10,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-08-19",
+      "n_scored": 10,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 4,
+      "day": "2022-08-20",
+      "n_scored": 15,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-08-21",
+      "n_scored": 3,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-08-22",
+      "n_scored": 6,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 4,
+      "day": "2022-08-23",
+      "n_scored": 11,
+      "planted_alerted": 2,
+      "planted_scored": 2
+    },
+    {
+      "alerts": 3,
+      "day": "2022-08-24",
+      "n_scored": 8,
+      "planted_alerted": 1,
+      "planted_scored": 1
+    },
+    {
+      "alerts": 2,
+      "day": "2022-08-25",
+      "n_scored": 5,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 3,
+      "day": "2022-08-26",
+      "n_scored": 8,
+      "planted_alerted": 1,
+      "planted_scored": 1
+    },
+    {
+      "alerts": 3,
+      "day": "2022-08-27",
+      "n_scored": 3,
+      "planted_alerted": 1,
+      "planted_scored": 1
+    },
+    {
+      "alerts": 3,
+      "day": "2022-08-28",
+      "n_scored": 6,
+      "planted_alerted": 2,
+      "planted_scored": 3
+    },
+    {
+      "alerts": 1,
+      "day": "2022-08-29",
+      "n_scored": 9,
+      "planted_alerted": 1,
+      "planted_scored": 2
+    },
+    {
+      "alerts": 1,
+      "day": "2022-08-30",
+      "n_scored": 8,
+      "planted_alerted": 1,
+      "planted_scored": 2
+    },
+    {
+      "alerts": 1,
+      "day": "2022-08-31",
+      "n_scored": 8,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-09-01",
+      "n_scored": 6,
+      "planted_alerted": 1,
+      "planted_scored": 1
+    },
+    {
+      "alerts": 5,
+      "day": "2022-09-02",
+      "n_scored": 8,
+      "planted_alerted": 1,
+      "planted_scored": 2
+    },
+    {
+      "alerts": 1,
+      "day": "2022-09-03",
+      "n_scored": 5,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 4,
+      "day": "2022-09-04",
+      "n_scored": 7,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 3,
+      "day": "2022-09-05",
+      "n_scored": 9,
+      "planted_alerted": 1,
+      "planted_scored": 1
+    },
+    {
+      "alerts": 2,
+      "day": "2022-09-06",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 3,
+      "day": "2022-09-07",
+      "n_scored": 10,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 4,
+      "day": "2022-09-08",
+      "n_scored": 9,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-09-09",
+      "n_scored": 9,
+      "planted_alerted": 1,
+      "planted_scored": 1
+    },
+    {
+      "alerts": 1,
+      "day": "2022-09-10",
+      "n_scored": 9,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 3,
+      "day": "2022-09-11",
+      "n_scored": 7,
+      "planted_alerted": 3,
+      "planted_scored": 3
+    },
+    {
+      "alerts": 1,
+      "day": "2022-09-12",
+      "n_scored": 4,
+      "planted_alerted": 1,
+      "planted_scored": 1
+    },
+    {
+      "alerts": 3,
+      "day": "2022-09-13",
+      "n_scored": 7,
+      "planted_alerted": 1,
+      "planted_scored": 1
+    },
+    {
+      "alerts": 1,
+      "day": "2022-09-14",
+      "n_scored": 4,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-09-15",
+      "n_scored": 5,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 5,
+      "day": "2022-09-16",
+      "n_scored": 9,
+      "planted_alerted": 1,
+      "planted_scored": 1
+    },
+    {
+      "alerts": 3,
+      "day": "2022-09-17",
+      "n_scored": 6,
+      "planted_alerted": 2,
+      "planted_scored": 2
+    },
+    {
+      "alerts": 2,
+      "day": "2022-09-18",
+      "n_scored": 7,
+      "planted_alerted": 2,
+      "planted_scored": 2
+    },
+    {
+      "alerts": 1,
+      "day": "2022-09-19",
+      "n_scored": 3,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 3,
+      "day": "2022-09-20",
+      "n_scored": 6,
+      "planted_alerted": 2,
+      "planted_scored": 3
+    },
+    {
+      "alerts": 1,
+      "day": "2022-09-21",
+      "n_scored": 7,
+      "planted_alerted": 1,
+      "planted_scored": 1
+    },
+    {
+      "alerts": 1,
+      "day": "2022-09-22",
+      "n_scored": 7,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-09-23",
+      "n_scored": 12,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-09-24",
+      "n_scored": 7,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-09-25",
+      "n_scored": 7,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2022-09-26",
+      "n_scored": 3,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-09-27",
+      "n_scored": 5,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-09-28",
+      "n_scored": 5,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-09-29",
+      "n_scored": 12,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2022-09-30",
+      "n_scored": 4,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-10-01",
+      "n_scored": 3,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-10-02",
+      "n_scored": 5,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2022-10-03",
+      "n_scored": 6,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 5,
+      "day": "2022-10-04",
+      "n_scored": 9,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-10-05",
+      "n_scored": 5,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-10-06",
+      "n_scored": 12,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 6,
+      "day": "2022-10-07",
+      "n_scored": 15,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 7,
+      "day": "2022-10-08",
+      "n_scored": 19,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-10-09",
+      "n_scored": 6,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-10-10",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-10-11",
+      "n_scored": 8,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-10-12",
+      "n_scored": 7,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 3,
+      "day": "2022-10-13",
+      "n_scored": 10,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 17,
+      "day": "2022-10-14",
+      "n_scored": 36,
+      "planted_alerted": 16,
+      "planted_scored": 32
+    },
+    {
+      "alerts": 3,
+      "day": "2022-10-15",
+      "n_scored": 3,
+      "planted_alerted": 1,
+      "planted_scored": 1
+    },
+    {
+      "alerts": 1,
+      "day": "2022-10-16",
+      "n_scored": 3,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2022-10-17",
+      "n_scored": 5,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 5,
+      "day": "2022-10-18",
+      "n_scored": 10,
+      "planted_alerted": 3,
+      "planted_scored": 6
+    },
+    {
+      "alerts": 22,
+      "day": "2022-10-19",
+      "n_scored": 32,
+      "planted_alerted": 21,
+      "planted_scored": 27
+    },
+    {
+      "alerts": 3,
+      "day": "2022-10-20",
+      "n_scored": 5,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-10-21",
+      "n_scored": 9,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-10-22",
+      "n_scored": 5,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2022-10-23",
+      "n_scored": 4,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-10-24",
+      "n_scored": 5,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-10-25",
+      "n_scored": 10,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2022-10-26",
+      "n_scored": 4,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-10-27",
+      "n_scored": 4,
+      "planted_alerted": 1,
+      "planted_scored": 1
+    },
+    {
+      "alerts": 4,
+      "day": "2022-10-28",
+      "n_scored": 5,
+      "planted_alerted": 3,
+      "planted_scored": 3
+    },
+    {
+      "alerts": 3,
+      "day": "2022-10-29",
+      "n_scored": 8,
+      "planted_alerted": 2,
+      "planted_scored": 5
+    },
+    {
+      "alerts": 5,
+      "day": "2022-10-30",
+      "n_scored": 10,
+      "planted_alerted": 4,
+      "planted_scored": 6
+    },
+    {
+      "alerts": 9,
+      "day": "2022-10-31",
+      "n_scored": 17,
+      "planted_alerted": 8,
+      "planted_scored": 10
+    },
+    {
+      "alerts": 6,
+      "day": "2022-11-01",
+      "n_scored": 13,
+      "planted_alerted": 5,
+      "planted_scored": 9
+    },
+    {
+      "alerts": 6,
+      "day": "2022-11-02",
+      "n_scored": 11,
+      "planted_alerted": 6,
+      "planted_scored": 8
+    },
+    {
+      "alerts": 7,
+      "day": "2022-11-03",
+      "n_scored": 9,
+      "planted_alerted": 7,
+      "planted_scored": 7
+    },
+    {
+      "alerts": 8,
+      "day": "2022-11-04",
+      "n_scored": 12,
+      "planted_alerted": 4,
+      "planted_scored": 5
+    },
+    {
+      "alerts": 5,
+      "day": "2022-11-05",
+      "n_scored": 8,
+      "planted_alerted": 4,
+      "planted_scored": 6
+    },
+    {
+      "alerts": 13,
+      "day": "2022-11-06",
+      "n_scored": 16,
+      "planted_alerted": 12,
+      "planted_scored": 12
+    },
+    {
+      "alerts": 11,
+      "day": "2022-11-07",
+      "n_scored": 13,
+      "planted_alerted": 9,
+      "planted_scored": 9
+    },
+    {
+      "alerts": 11,
+      "day": "2022-11-08",
+      "n_scored": 16,
+      "planted_alerted": 11,
+      "planted_scored": 12
+    },
+    {
+      "alerts": 10,
+      "day": "2022-11-09",
+      "n_scored": 15,
+      "planted_alerted": 8,
+      "planted_scored": 8
+    },
+    {
+      "alerts": 15,
+      "day": "2022-11-10",
+      "n_scored": 17,
+      "planted_alerted": 14,
+      "planted_scored": 14
+    },
+    {
+      "alerts": 7,
+      "day": "2022-11-11",
+      "n_scored": 7,
+      "planted_alerted": 7,
+      "planted_scored": 7
+    },
+    {
+      "alerts": 5,
+      "day": "2022-11-12",
+      "n_scored": 5,
+      "planted_alerted": 5,
+      "planted_scored": 5
+    },
+    {
+      "alerts": 14,
+      "day": "2022-11-13",
+      "n_scored": 16,
+      "planted_alerted": 13,
+      "planted_scored": 13
+    },
+    {
+      "alerts": 13,
+      "day": "2022-11-14",
+      "n_scored": 14,
+      "planted_alerted": 11,
+      "planted_scored": 11
+    },
+    {
+      "alerts": 6,
+      "day": "2022-11-15",
+      "n_scored": 11,
+      "planted_alerted": 4,
+      "planted_scored": 4
+    },
+    {
+      "alerts": 10,
+      "day": "2022-11-16",
+      "n_scored": 13,
+      "planted_alerted": 8,
+      "planted_scored": 8
+    },
+    {
+      "alerts": 7,
+      "day": "2022-11-17",
+      "n_scored": 12,
+      "planted_alerted": 6,
+      "planted_scored": 6
+    },
+    {
+      "alerts": 12,
+      "day": "2022-11-18",
+      "n_scored": 14,
+      "planted_alerted": 10,
+      "planted_scored": 10
+    },
+    {
+      "alerts": 10,
+      "day": "2022-11-19",
+      "n_scored": 11,
+      "planted_alerted": 9,
+      "planted_scored": 9
+    },
+    {
+      "alerts": 15,
+      "day": "2022-11-20",
+      "n_scored": 18,
+      "planted_alerted": 15,
+      "planted_scored": 15
+    },
+    {
+      "alerts": 7,
+      "day": "2022-11-21",
+      "n_scored": 12,
+      "planted_alerted": 7,
+      "planted_scored": 7
+    },
+    {
+      "alerts": 5,
+      "day": "2022-11-22",
+      "n_scored": 6,
+      "planted_alerted": 5,
+      "planted_scored": 5
+    },
+    {
+      "alerts": 17,
+      "day": "2022-11-23",
+      "n_scored": 23,
+      "planted_alerted": 16,
+      "planted_scored": 16
+    },
+    {
+      "alerts": 8,
+      "day": "2022-11-24",
+      "n_scored": 10,
+      "planted_alerted": 8,
+      "planted_scored": 8
+    },
+    {
+      "alerts": 8,
+      "day": "2022-11-25",
+      "n_scored": 10,
+      "planted_alerted": 6,
+      "planted_scored": 6
+    },
+    {
+      "alerts": 4,
+      "day": "2022-11-26",
+      "n_scored": 7,
+      "planted_alerted": 4,
+      "planted_scored": 4
+    },
+    {
+      "alerts": 4,
+      "day": "2022-11-27",
+      "n_scored": 9,
+      "planted_alerted": 4,
+      "planted_scored": 4
+    },
+    {
+      "alerts": 1,
+      "day": "2022-11-28",
+      "n_scored": 8,
+      "planted_alerted": 0,
+      "planted_scored": 6
+    },
+    {
+      "alerts": 0,
+      "day": "2022-11-29",
+      "n_scored": 3,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-11-30",
+      "n_scored": 6,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 11,
+      "day": "2022-12-01",
+      "n_scored": 17,
+      "planted_alerted": 10,
+      "planted_scored": 12
+    },
+    {
+      "alerts": 0,
+      "day": "2022-12-02",
+      "n_scored": 7,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-12-03",
+      "n_scored": 7,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 10,
+      "day": "2022-12-04",
+      "n_scored": 14,
+      "planted_alerted": 10,
+      "planted_scored": 10
+    },
+    {
+      "alerts": 1,
+      "day": "2022-12-05",
+      "n_scored": 3,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2022-12-06",
+      "n_scored": 3,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-12-07",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2022-12-08",
+      "n_scored": 5,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2022-12-09",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2022-12-10",
+      "n_scored": 3,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2022-12-11",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-12-12",
+      "n_scored": 4,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2022-12-13",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-12-14",
+      "n_scored": 7,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2022-12-15",
+      "n_scored": 5,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2022-12-16",
+      "n_scored": 5,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2022-12-17",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2022-12-18",
+      "n_scored": 1,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2022-12-19",
+      "n_scored": 7,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-12-20",
+      "n_scored": 8,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2022-12-21",
+      "n_scored": 4,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2022-12-22",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-12-23",
+      "n_scored": 3,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-12-24",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2022-12-25",
+      "n_scored": 4,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-12-26",
+      "n_scored": 3,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-12-27",
+      "n_scored": 10,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-12-28",
+      "n_scored": 7,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2022-12-29",
+      "n_scored": 1,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-12-30",
+      "n_scored": 5,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2022-12-31",
+      "n_scored": 4,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2023-01-01",
+      "n_scored": 3,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2023-01-02",
+      "n_scored": 5,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-01-03",
+      "n_scored": 1,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2023-01-04",
+      "n_scored": 6,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 3,
+      "day": "2023-01-06",
+      "n_scored": 3,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2023-01-07",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2023-01-08",
+      "n_scored": 4,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2023-01-09",
+      "n_scored": 4,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 3,
+      "day": "2023-01-10",
+      "n_scored": 6,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2023-01-11",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2023-01-12",
+      "n_scored": 5,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2023-01-13",
+      "n_scored": 7,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2023-01-14",
+      "n_scored": 5,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2023-01-15",
+      "n_scored": 3,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-01-16",
+      "n_scored": 3,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-01-17",
+      "n_scored": 4,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2023-01-18",
+      "n_scored": 4,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2023-01-19",
+      "n_scored": 4,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2023-01-20",
+      "n_scored": 4,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2023-01-21",
+      "n_scored": 4,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-01-22",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2023-01-23",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-01-24",
+      "n_scored": 4,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-01-26",
+      "n_scored": 3,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-01-27",
+      "n_scored": 1,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-01-28",
+      "n_scored": 1,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-01-29",
+      "n_scored": 3,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 3,
+      "day": "2023-01-30",
+      "n_scored": 12,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-01-31",
+      "n_scored": 8,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2023-02-02",
+      "n_scored": 6,
+      "planted_alerted": 1,
+      "planted_scored": 1
+    },
+    {
+      "alerts": 2,
+      "day": "2023-02-03",
+      "n_scored": 5,
+      "planted_alerted": 1,
+      "planted_scored": 1
+    },
+    {
+      "alerts": 2,
+      "day": "2023-02-04",
+      "n_scored": 4,
+      "planted_alerted": 1,
+      "planted_scored": 1
+    },
+    {
+      "alerts": 2,
+      "day": "2023-02-05",
+      "n_scored": 6,
+      "planted_alerted": 1,
+      "planted_scored": 1
+    },
+    {
+      "alerts": 4,
+      "day": "2023-02-06",
+      "n_scored": 11,
+      "planted_alerted": 3,
+      "planted_scored": 4
+    },
+    {
+      "alerts": 0,
+      "day": "2023-02-07",
+      "n_scored": 8,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 4,
+      "day": "2023-02-08",
+      "n_scored": 7,
+      "planted_alerted": 1,
+      "planted_scored": 1
+    },
+    {
+      "alerts": 3,
+      "day": "2023-02-09",
+      "n_scored": 15,
+      "planted_alerted": 2,
+      "planted_scored": 5
+    },
+    {
+      "alerts": 2,
+      "day": "2023-02-10",
+      "n_scored": 6,
+      "planted_alerted": 2,
+      "planted_scored": 2
+    },
+    {
+      "alerts": 6,
+      "day": "2023-02-11",
+      "n_scored": 11,
+      "planted_alerted": 5,
+      "planted_scored": 6
+    },
+    {
+      "alerts": 2,
+      "day": "2023-02-12",
+      "n_scored": 6,
+      "planted_alerted": 2,
+      "planted_scored": 4
+    },
+    {
+      "alerts": 2,
+      "day": "2023-02-13",
+      "n_scored": 4,
+      "planted_alerted": 0,
+      "planted_scored": 2
+    },
+    {
+      "alerts": 9,
+      "day": "2023-02-14",
+      "n_scored": 13,
+      "planted_alerted": 8,
+      "planted_scored": 10
+    },
+    {
+      "alerts": 17,
+      "day": "2023-02-15",
+      "n_scored": 26,
+      "planted_alerted": 16,
+      "planted_scored": 20
+    },
+    {
+      "alerts": 15,
+      "day": "2023-02-16",
+      "n_scored": 20,
+      "planted_alerted": 13,
+      "planted_scored": 14
+    },
+    {
+      "alerts": 11,
+      "day": "2023-02-17",
+      "n_scored": 14,
+      "planted_alerted": 10,
+      "planted_scored": 10
+    },
+    {
+      "alerts": 15,
+      "day": "2023-02-18",
+      "n_scored": 21,
+      "planted_alerted": 13,
+      "planted_scored": 15
+    },
+    {
+      "alerts": 10,
+      "day": "2023-02-19",
+      "n_scored": 17,
+      "planted_alerted": 9,
+      "planted_scored": 10
+    },
+    {
+      "alerts": 9,
+      "day": "2023-02-20",
+      "n_scored": 15,
+      "planted_alerted": 8,
+      "planted_scored": 8
+    },
+    {
+      "alerts": 8,
+      "day": "2023-02-21",
+      "n_scored": 9,
+      "planted_alerted": 8,
+      "planted_scored": 9
+    },
+    {
+      "alerts": 5,
+      "day": "2023-02-22",
+      "n_scored": 9,
+      "planted_alerted": 2,
+      "planted_scored": 3
+    },
+    {
+      "alerts": 3,
+      "day": "2023-02-23",
+      "n_scored": 6,
+      "planted_alerted": 2,
+      "planted_scored": 2
+    },
+    {
+      "alerts": 6,
+      "day": "2023-02-24",
+      "n_scored": 12,
+      "planted_alerted": 6,
+      "planted_scored": 6
+    },
+    {
+      "alerts": 2,
+      "day": "2023-02-25",
+      "n_scored": 6,
+      "planted_alerted": 2,
+      "planted_scored": 2
+    },
+    {
+      "alerts": 2,
+      "day": "2023-02-26",
+      "n_scored": 3,
+      "planted_alerted": 2,
+      "planted_scored": 2
+    },
+    {
+      "alerts": 5,
+      "day": "2023-02-27",
+      "n_scored": 13,
+      "planted_alerted": 5,
+      "planted_scored": 9
+    },
+    {
+      "alerts": 2,
+      "day": "2023-02-28",
+      "n_scored": 9,
+      "planted_alerted": 2,
+      "planted_scored": 4
+    },
+    {
+      "alerts": 6,
+      "day": "2023-03-01",
+      "n_scored": 8,
+      "planted_alerted": 4,
+      "planted_scored": 5
+    },
+    {
+      "alerts": 6,
+      "day": "2023-03-02",
+      "n_scored": 18,
+      "planted_alerted": 5,
+      "planted_scored": 8
+    },
+    {
+      "alerts": 4,
+      "day": "2023-03-03",
+      "n_scored": 8,
+      "planted_alerted": 2,
+      "planted_scored": 3
+    },
+    {
+      "alerts": 10,
+      "day": "2023-03-04",
+      "n_scored": 14,
+      "planted_alerted": 7,
+      "planted_scored": 8
+    },
+    {
+      "alerts": 8,
+      "day": "2023-03-05",
+      "n_scored": 14,
+      "planted_alerted": 7,
+      "planted_scored": 9
+    },
+    {
+      "alerts": 4,
+      "day": "2023-03-06",
+      "n_scored": 13,
+      "planted_alerted": 3,
+      "planted_scored": 3
+    },
+    {
+      "alerts": 5,
+      "day": "2023-03-07",
+      "n_scored": 8,
+      "planted_alerted": 4,
+      "planted_scored": 4
+    },
+    {
+      "alerts": 18,
+      "day": "2023-03-08",
+      "n_scored": 21,
+      "planted_alerted": 16,
+      "planted_scored": 16
+    },
+    {
+      "alerts": 7,
+      "day": "2023-03-09",
+      "n_scored": 15,
+      "planted_alerted": 7,
+      "planted_scored": 11
+    },
+    {
+      "alerts": 4,
+      "day": "2023-03-10",
+      "n_scored": 10,
+      "planted_alerted": 2,
+      "planted_scored": 3
+    },
+    {
+      "alerts": 3,
+      "day": "2023-03-11",
+      "n_scored": 10,
+      "planted_alerted": 2,
+      "planted_scored": 3
+    },
+    {
+      "alerts": 2,
+      "day": "2023-03-12",
+      "n_scored": 10,
+      "planted_alerted": 1,
+      "planted_scored": 1
+    },
+    {
+      "alerts": 1,
+      "day": "2023-03-13",
+      "n_scored": 8,
+      "planted_alerted": 1,
+      "planted_scored": 1
+    },
+    {
+      "alerts": 3,
+      "day": "2023-03-14",
+      "n_scored": 8,
+      "planted_alerted": 3,
+      "planted_scored": 3
+    },
+    {
+      "alerts": 7,
+      "day": "2023-03-15",
+      "n_scored": 8,
+      "planted_alerted": 5,
+      "planted_scored": 5
+    },
+    {
+      "alerts": 9,
+      "day": "2023-03-16",
+      "n_scored": 16,
+      "planted_alerted": 8,
+      "planted_scored": 10
+    },
+    {
+      "alerts": 10,
+      "day": "2023-03-17",
+      "n_scored": 16,
+      "planted_alerted": 8,
+      "planted_scored": 9
+    },
+    {
+      "alerts": 9,
+      "day": "2023-03-18",
+      "n_scored": 24,
+      "planted_alerted": 8,
+      "planted_scored": 8
+    },
+    {
+      "alerts": 7,
+      "day": "2023-03-19",
+      "n_scored": 9,
+      "planted_alerted": 7,
+      "planted_scored": 8
+    },
+    {
+      "alerts": 10,
+      "day": "2023-03-20",
+      "n_scored": 13,
+      "planted_alerted": 7,
+      "planted_scored": 7
+    },
+    {
+      "alerts": 3,
+      "day": "2023-03-21",
+      "n_scored": 6,
+      "planted_alerted": 2,
+      "planted_scored": 2
+    },
+    {
+      "alerts": 9,
+      "day": "2023-03-22",
+      "n_scored": 14,
+      "planted_alerted": 5,
+      "planted_scored": 5
+    },
+    {
+      "alerts": 2,
+      "day": "2023-03-23",
+      "n_scored": 3,
+      "planted_alerted": 2,
+      "planted_scored": 2
+    },
+    {
+      "alerts": 3,
+      "day": "2023-03-24",
+      "n_scored": 5,
+      "planted_alerted": 3,
+      "planted_scored": 3
+    },
+    {
+      "alerts": 1,
+      "day": "2023-03-25",
+      "n_scored": 3,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 5,
+      "day": "2023-03-26",
+      "n_scored": 10,
+      "planted_alerted": 5,
+      "planted_scored": 5
+    },
+    {
+      "alerts": 5,
+      "day": "2023-03-27",
+      "n_scored": 12,
+      "planted_alerted": 4,
+      "planted_scored": 5
+    },
+    {
+      "alerts": 9,
+      "day": "2023-03-28",
+      "n_scored": 18,
+      "planted_alerted": 8,
+      "planted_scored": 9
+    },
+    {
+      "alerts": 4,
+      "day": "2023-03-29",
+      "n_scored": 8,
+      "planted_alerted": 3,
+      "planted_scored": 3
+    },
+    {
+      "alerts": 5,
+      "day": "2023-03-30",
+      "n_scored": 9,
+      "planted_alerted": 2,
+      "planted_scored": 2
+    },
+    {
+      "alerts": 3,
+      "day": "2023-03-31",
+      "n_scored": 6,
+      "planted_alerted": 3,
+      "planted_scored": 3
+    },
+    {
+      "alerts": 1,
+      "day": "2023-04-01",
+      "n_scored": 3,
+      "planted_alerted": 1,
+      "planted_scored": 1
+    },
+    {
+      "alerts": 1,
+      "day": "2023-04-02",
+      "n_scored": 1,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-04-03",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2023-04-04",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-04-05",
+      "n_scored": 3,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-04-06",
+      "n_scored": 1,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-04-07",
+      "n_scored": 3,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2023-04-08",
+      "n_scored": 3,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2023-04-09",
+      "n_scored": 3,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-04-10",
+      "n_scored": 5,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 3,
+      "day": "2023-04-12",
+      "n_scored": 6,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2023-04-13",
+      "n_scored": 5,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 3,
+      "day": "2023-04-14",
+      "n_scored": 4,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-04-15",
+      "n_scored": 1,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2023-04-16",
+      "n_scored": 3,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2023-04-17",
+      "n_scored": 3,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2023-04-18",
+      "n_scored": 3,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2023-04-19",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2023-04-20",
+      "n_scored": 3,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2023-04-21",
+      "n_scored": 5,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2023-04-22",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2023-04-23",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-04-24",
+      "n_scored": 3,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 3,
+      "day": "2023-04-25",
+      "n_scored": 6,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-04-26",
+      "n_scored": 1,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2023-04-27",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-04-29",
+      "n_scored": 4,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-04-30",
+      "n_scored": 3,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-05-01",
+      "n_scored": 3,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2023-05-02",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2023-05-03",
+      "n_scored": 1,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-05-04",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-05-05",
+      "n_scored": 3,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-05-06",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-05-07",
+      "n_scored": 3,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2023-05-10",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-05-12",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-05-13",
+      "n_scored": 5,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-05-14",
+      "n_scored": 1,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-05-15",
+      "n_scored": 1,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2023-05-18",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2023-05-19",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2023-05-20",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-05-22",
+      "n_scored": 1,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2023-05-23",
+      "n_scored": 3,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-05-24",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-05-25",
+      "n_scored": 5,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-05-26",
+      "n_scored": 1,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-05-27",
+      "n_scored": 4,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2023-05-28",
+      "n_scored": 4,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-05-29",
+      "n_scored": 1,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-05-31",
+      "n_scored": 1,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-06-02",
+      "n_scored": 1,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-06-04",
+      "n_scored": 1,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-06-05",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2023-06-06",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-06-07",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2023-06-08",
+      "n_scored": 6,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-06-09",
+      "n_scored": 1,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-06-10",
+      "n_scored": 5,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-06-11",
+      "n_scored": 1,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-06-12",
+      "n_scored": 1,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-06-13",
+      "n_scored": 1,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2023-06-14",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-06-17",
+      "n_scored": 1,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-06-19",
+      "n_scored": 1,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-06-20",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2023-06-21",
+      "n_scored": 3,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-06-22",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-06-23",
+      "n_scored": 1,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-06-25",
+      "n_scored": 1,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2023-06-26",
+      "n_scored": 3,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2023-06-27",
+      "n_scored": 11,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2023-06-28",
+      "n_scored": 9,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 2,
+      "day": "2023-06-29",
+      "n_scored": 7,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-06-30",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-07-01",
+      "n_scored": 1,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-07-02",
+      "n_scored": 1,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-07-03",
+      "n_scored": 1,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2023-07-04",
+      "n_scored": 1,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-07-06",
+      "n_scored": 3,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-07-07",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2023-07-08",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2023-07-09",
+      "n_scored": 4,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-07-10",
+      "n_scored": 5,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2023-07-11",
+      "n_scored": 3,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 6,
+      "day": "2023-07-12",
+      "n_scored": 12,
+      "planted_alerted": 2,
+      "planted_scored": 3
+    },
+    {
+      "alerts": 3,
+      "day": "2023-07-13",
+      "n_scored": 7,
+      "planted_alerted": 3,
+      "planted_scored": 5
+    },
+    {
+      "alerts": 2,
+      "day": "2023-07-14",
+      "n_scored": 6,
+      "planted_alerted": 2,
+      "planted_scored": 3
+    },
+    {
+      "alerts": 3,
+      "day": "2023-07-15",
+      "n_scored": 5,
+      "planted_alerted": 3,
+      "planted_scored": 3
+    },
+    {
+      "alerts": 5,
+      "day": "2023-07-16",
+      "n_scored": 6,
+      "planted_alerted": 5,
+      "planted_scored": 5
+    },
+    {
+      "alerts": 8,
+      "day": "2023-07-17",
+      "n_scored": 10,
+      "planted_alerted": 8,
+      "planted_scored": 8
+    },
+    {
+      "alerts": 5,
+      "day": "2023-07-18",
+      "n_scored": 8,
+      "planted_alerted": 5,
+      "planted_scored": 5
+    },
+    {
+      "alerts": 0,
+      "day": "2023-07-19",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2023-07-20",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2023-07-23",
+      "n_scored": 1,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-07-24",
+      "n_scored": 4,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-07-25",
+      "n_scored": 4,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-07-26",
+      "n_scored": 3,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-07-27",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-07-31",
+      "n_scored": 1,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-08-01",
+      "n_scored": 1,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-08-02",
+      "n_scored": 1,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-08-06",
+      "n_scored": 1,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2023-08-07",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-08-08",
+      "n_scored": 1,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-08-09",
+      "n_scored": 1,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-08-10",
+      "n_scored": 3,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2023-08-12",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-08-13",
+      "n_scored": 1,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-08-14",
+      "n_scored": 1,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2023-08-15",
+      "n_scored": 4,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-08-16",
+      "n_scored": 3,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-08-17",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-08-18",
+      "n_scored": 4,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-08-19",
+      "n_scored": 1,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2023-08-23",
+      "n_scored": 1,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-08-24",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 1,
+      "day": "2023-08-25",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-08-26",
+      "n_scored": 2,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-08-28",
+      "n_scored": 1,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    },
+    {
+      "alerts": 0,
+      "day": "2023-08-30",
+      "n_scored": 1,
+      "planted_alerted": 0,
+      "planted_scored": 0
+    }
+  ],
+  "undetected_campaigns": 0
+}

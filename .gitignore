@@ -1,0 +1,52 @@
+# --- data and heavy artifacts ---
+# NOTE: this must be "data/raw/*", not "data/raw/" - excluding the directory
+# itself would stop git from descending into it, which silently disables the
+# "!data/raw/source_hashes.txt" re-include below.
+data/raw/*
+!data/raw/source_hashes.txt
+data/processed/
+external/
+embedding_cache/
+# artifacts/*/figures/ is intentionally COMMITTED (51 small PNGs, ~1.7 MB): the
+# README and docs/model_card.md promise per-run figures, and they render on GitHub.
+*.npz
+*.npy
+*.parquet
+
+# keep run manifests/summaries/reports in git if desired:
+!artifacts/*/summary.json
+!artifacts/*/manifest.json
+!artifacts/*/report.md
+# Per-run model outputs are evidence, not regenerable data: without these the
+# investigation UI (app/streamlit_app.py) cannot open a saved run from a clone.
+# NOTE: only artifacts/* is re-included here; data/processed/*.parquet stays out.
+!artifacts/*/test_predictions.parquet
+!artifacts/*/rings.parquet
+
+# --- python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+.pytest_cache/
+.ruff_cache/
+
+# --- secrets ---
+kaggle.json
+.env
+
+# --- editors/os ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# --- extra safety for a public push ---
+.ipynb_checkpoints/
+*.zip
+*.tar.gz
+*.tgz
+*.log
+.streamlit/secrets.toml

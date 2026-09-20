@@ -1,0 +1,78 @@
+# Shared defaults for all tracks. Track configs override these values.
+project: reviewring
+seed: 42
+track: base
+
+paths:
+  raw_dir: data/raw
+  processed_dir: data/processed
+  artifacts_dir: artifacts
+  yelp_mat: data/raw/care/YelpChi.mat
+  amazon_jsonl: data/raw/amazon/Subscription_Boxes.jsonl
+
+split:
+  protocol: stratified_random          # Track A default; Track B overrides
+  fractions: [0.60, 0.15, 0.10, 0.15]
+  roles: [train, validation, calibration, test]
+  save_assignments: true
+
+features:
+  timestamp_unit: ms                   # verify against the downloaded source
+  history_days: [1, 7, 30]
+  use_snapshot_metadata: false         # mutable metadata is never a model input
+
+text:
+  model: sentence-transformers/all-MiniLM-L6-v2
+  revision: null                       # resolved and pinned at encode time
+  batch_size: 64
+  freeze: true
+  fallback: tfidf                      # used when the encoder cannot be downloaded
+
+graph:
+  causal: true
+  reviewer_window_days: 30
+  target_window_days: 7
+  min_shared_targets: 2
+  max_reviewer_neighbors: 10
+  max_target_neighbors: 20
+  max_overlap_neighbors: 10
+  semantic_edges: false
+
+model:
+  name: adaptive_fusion
+  hidden_dim: 64
+  layers: 2
+  dropout: 0.2
+
+training:
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  batch_size: 256
+  fanout_per_relation: [10, 5]
+  max_epochs: 100
+  patience: 10
+  checkpoint_metric: validation_ap
+  unknown_label_policy: mask
+  seeds: [17, 42, 73]
+  pos_weight_cap: 100.0
+
+rings:
+  min_accounts: 3
+  min_targets: 2
+  review_threshold: null               # selected on validation, then frozen
+  top_m_reviews: 5
+  priority_weights: [0.5, 0.3, 0.2]
+
+explanations:
+  max_candidate_edges: 100
+  max_model_calls: 50
+  mode: computational_mask
+
+replay:
+  resolution: daily
+  carry_prior_context: true
+
+evaluation:
+  precision_at_k: [50, 100]
+  recall_at_k: [50, 100]
+  reliability_bins: 10

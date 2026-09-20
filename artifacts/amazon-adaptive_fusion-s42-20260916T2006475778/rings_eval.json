@@ -1,0 +1,256 @@
+{
+  "campaign_matching": {
+    "campaign_precision": 0.9285714285714286,
+    "campaign_recall": 0.5416666666666666,
+    "fragmentation": 0.0,
+    "mean_iou": 0.7769230769230769,
+    "member_recovery": 0.7769230769230769,
+    "merging": 0.0,
+    "n_predicted": 14,
+    "n_truth": 24
+  },
+  "matches": [
+    {
+      "iou": 0.9,
+      "matched_above_threshold": true,
+      "predicted": 0,
+      "truth": 4
+    },
+    {
+      "iou": 0.5,
+      "matched_above_threshold": true,
+      "predicted": 1,
+      "truth": 13
+    },
+    {
+      "iou": 0.6,
+      "matched_above_threshold": true,
+      "predicted": 2,
+      "truth": 8
+    },
+    {
+      "iou": 0.8,
+      "matched_above_threshold": true,
+      "predicted": 3,
+      "truth": 10
+    },
+    {
+      "iou": 1.0,
+      "matched_above_threshold": true,
+      "predicted": 4,
+      "truth": 0
+    },
+    {
+      "iou": 0.35,
+      "matched_above_threshold": false,
+      "predicted": 5,
+      "truth": 23
+    },
+    {
+      "iou": 1.0,
+      "matched_above_threshold": true,
+      "predicted": 6,
+      "truth": 17
+    },
+    {
+      "iou": 0.8,
+      "matched_above_threshold": true,
+      "predicted": 7,
+      "truth": 1
+    },
+    {
+      "iou": 0.8,
+      "matched_above_threshold": true,
+      "predicted": 8,
+      "truth": 14
+    },
+    {
+      "iou": 0.6,
+      "matched_above_threshold": true,
+      "predicted": 9,
+      "truth": 16
+    },
+    {
+      "iou": 0.6,
+      "matched_above_threshold": true,
+      "predicted": 10,
+      "truth": 11
+    },
+    {
+      "iou": 1.0,
+      "matched_above_threshold": true,
+      "predicted": 11,
+      "truth": 2
+    },
+    {
+      "iou": 0.5,
+      "matched_above_threshold": true,
+      "predicted": 12,
+      "truth": 12
+    },
+    {
+      "iou": 1.0,
+      "matched_above_threshold": true,
+      "predicted": 13,
+      "truth": 3
+    }
+  ],
+  "n_candidates": 14,
+  "n_test_truth_campaigns": 24,
+  "priority_table": [
+    {
+      "adjusted_overlap": 0.2739651416122004,
+      "candidate_id": "ring-0004",
+      "mean_top_score": 0.999806098648526,
+      "members": 18,
+      "priority": 0.9464716767752435,
+      "review_ids": 56,
+      "size_ref_mean": 0.4765795206971677,
+      "synchrony": 1.0,
+      "targets": 4
+    },
+    {
+      "adjusted_overlap": 0.4,
+      "candidate_id": "ring-0009",
+      "mean_top_score": 0.9979407474218196,
+      "members": 5,
+      "priority": 0.9189703737109097,
+      "review_ids": 10,
+      "size_ref_mean": 0.6,
+      "synchrony": 0.6,
+      "targets": 2
+    },
+    {
+      "adjusted_overlap": 0.18716931216931218,
+      "candidate_id": "ring-0005",
+      "mean_top_score": 0.9957813330874288,
+      "members": 3,
+      "priority": 0.8663430474960954,
+      "review_ids": 18,
+      "size_ref_mean": 0.17394179894179893,
+      "synchrony": 1.0,
+      "targets": 10
+    },
+    {
+      "adjusted_overlap": 0.28571428571428575,
+      "candidate_id": "ring-0006",
+      "mean_top_score": 0.9995869824913667,
+      "members": 8,
+      "priority": 0.838417829870022,
+      "review_ids": 27,
+      "size_ref_mean": 0.43749999999999994,
+      "synchrony": 0.4074074074074074,
+      "targets": 4
+    },
+    {
+      "adjusted_overlap": 0.24166666666666659,
+      "candidate_id": "ring-0000",
+      "mean_top_score": 0.9988206182621424,
+      "members": 5,
+      "priority": 0.7919103091310711,
+      "review_ids": 16,
+      "size_ref_mean": 0.4,
+      "synchrony": 0.375,
+      "targets": 4
+    },
+    {
+      "adjusted_overlap": 0.2499999999999999,
+      "candidate_id": "ring-0013",
+      "mean_top_score": 0.9998049469192145,
+      "members": 7,
+      "priority": 0.7915691401262738,
+      "review_ids": 21,
+      "size_ref_mean": 0.30634920634920637,
+      "synchrony": 0.3333333333333333,
+      "targets": 7
+    },
+    {
+      "adjusted_overlap": 0.25151002506265663,
+      "candidate_id": "ring-0012",
+      "mean_top_score": 0.9999997673105098,
+      "members": 20,
+      "priority": 0.7821728597000179,
+      "review_ids": 129,
+      "size_ref_mean": 0.43617794486215533,
+      "synchrony": 0.27906976744186046,
+      "targets": 8
+    },
+    {
+      "adjusted_overlap": 0.07652116402116402,
+      "candidate_id": "ring-0001",
+      "mean_top_score": 0.9984228765594345,
+      "members": 4,
+      "priority": 0.7680804858987649,
+      "review_ids": 23,
+      "size_ref_mean": 0.23227513227513227,
+      "synchrony": 1.0,
+      "targets": 12
+    },
+    {
+      "adjusted_overlap": 0.04146825396825396,
+      "candidate_id": "ring-0010",
+      "mean_top_score": 0.9978815078829403,
+      "members": 4,
+      "priority": 0.7362621825128988,
+      "review_ids": 17,
+      "size_ref_mean": 0.15714285714285714,
+      "synchrony": 1.0,
+      "targets": 10
+    },
+    {
+      "adjusted_overlap": 0.05111111111111116,
+      "candidate_id": "ring-0011",
+      "mean_top_score": 0.9986251417281355,
+      "members": 6,
+      "priority": 0.7242599392851204,
+      "review_ids": 19,
+      "size_ref_mean": 0.26555555555555554,
+      "synchrony": 0.8947368421052632,
+      "targets": 8
+    },
+    {
+      "adjusted_overlap": 0.0,
+      "candidate_id": "ring-0007",
+      "mean_top_score": 0.9921359128712309,
+      "members": 3,
+      "priority": 0.6960679564356155,
+      "review_ids": 10,
+      "size_ref_mean": 0.6666666666666666,
+      "synchrony": 1.0,
+      "targets": 4
+    },
+    {
+      "adjusted_overlap": 0.12038448393711548,
+      "candidate_id": "ring-0002",
+      "mean_top_score": 0.999997902131519,
+      "members": 20,
+      "priority": 0.671056851015943,
+      "review_ids": 118,
+      "size_ref_mean": 0.19315466697045647,
+      "synchrony": 0.3135593220338983,
+      "targets": 36
+    },
+    {
+      "adjusted_overlap": 0.04428571428571426,
+      "candidate_id": "ring-0008",
+      "mean_top_score": 0.9981259476763233,
+      "members": 5,
+      "priority": 0.6389201166953045,
+      "review_ids": 18,
+      "size_ref_mean": 0.36,
+      "synchrony": 0.5,
+      "targets": 8
+    },
+    {
+      "adjusted_overlap": 0.06911095077761742,
+      "candidate_id": "ring-0003",
+      "mean_top_score": 0.999998361822173,
+      "members": 10,
+      "priority": 0.6244941185781553,
+      "review_ids": 61,
+      "size_ref_mean": 0.15458794292127626,
+      "synchrony": 0.3114754098360656,
+      "targets": 27
+    }
+  ]
+}

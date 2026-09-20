@@ -1,0 +1,56 @@
+# Track B: Amazon Reviews 2023 raw-review temporal prototype.
+# Node = review. Three experts (language, relationship, timing) fused by a
+# gate. Controlled campaigns are simulated inside saved chronological
+# partitions; one scenario family is held out of training entirely.
+project: reviewring
+seed: 42
+track: raw_review_replay
+
+paths:
+  amazon_jsonl: data/raw/amazon/Subscription_Boxes.jsonl
+  processed_dir: data/processed/amazon
+  artifacts_dir: artifacts
+
+split:
+  protocol: chronological_campaign_disjoint
+  fractions: [0.60, 0.15, 0.10, 0.15]
+
+simulation:
+  campaigns_per_partition: 14
+  accounts_per_group: [5, 10, 20]
+  targets_per_group: [2, 4, 8]
+  duration_days: [1, 7, 30]
+  shared_activity: [low, medium, high]
+  text_style: [template, paraphrase, varied]
+  sentiment: [positive, negative]
+  ordinary_mix: [none, moderate]
+  legitimate_controls_per_partition: 30
+  heldout_family: burstwave              # reserved for test only, never trained
+  seed: 2023
+
+model:
+  name: adaptive_fusion                  # text | graph | time | fixed_fusion | global_fusion | adaptive_fusion
+  hidden_dim: 64
+  layers: 2
+  dropout: 0.2
+
+training:
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  batch_size: 256
+  max_epochs: 80
+  patience: 10
+  checkpoint_metric: validation_ap
+  seeds: [17, 42, 73]
+
+rings:
+  min_accounts: 3
+  min_targets: 2
+  review_threshold: null
+  top_k_review_budget: 300    # predeclared discovery budget (frozen before test)
+  top_m_reviews: 5
+  priority_weights: [0.5, 0.3, 0.2]
+
+replay:
+  resolution: daily
+  carry_prior_context: true

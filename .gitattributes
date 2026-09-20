@@ -1,0 +1,36 @@
+# ReviewRing AI - repository attributes
+#
+# Normalise text to LF in the repository AND in the working tree, so
+# scripts/run_all.sh and colab/colab_run.sh stay runnable under bash in Colab,
+# and so diffs stay stable across Windows/Linux checkouts.
+* text=auto eol=lf
+
+# Explicit text (kept LF even on a Windows checkout)
+*.sh             text eol=lf
+*.py             text eol=lf
+*.md             text eol=lf
+*.yaml           text eol=lf
+*.yml            text eol=lf
+*.json           text eol=lf
+*.jsonl          text eol=lf
+*.toml           text eol=lf
+*.txt            text eol=lf
+*.in             text eol=lf
+.gitignore       text eol=lf
+.gitattributes   text eol=lf
+
+# Binary: never normalise line endings, never attempt a textual diff
+*.pt             binary
+*.pth            binary
+*.npz            binary
+*.npy            binary
+*.parquet        binary
+*.mat            binary
+*.zip            binary
+*.gz             binary
+
+# Saved runs are machine-generated evidence: hide them from PR/HTML diffs and
+# keep them out of language statistics, while still tracking them.
+artifacts/**/*.png  -diff
+artifacts/**/*.pt   -diff
+artifacts/**        linguist-generated=true

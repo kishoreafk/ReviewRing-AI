@@ -1,0 +1,39 @@
+{
+  "calibration": {
+    "coef": 0.9186446146378207,
+    "fitted": true,
+    "intercept": -1.5270053592346569,
+    "score_kind": "proxy"
+  },
+  "metrics": {
+    "test_ap": 0.78503725634848,
+    "test_auc": 0.9404751975196083,
+    "test_brier": 0.05964898647095662,
+    "test_f1_at_0.5": 0.691754288876591,
+    "test_n": 6896,
+    "test_precision_at_100": 0.98,
+    "test_precision_at_50": 1.0,
+    "test_precision_at_500": 0.878,
+    "test_prevalence": 0.14544663573085848,
+    "test_recall_at_100": 0.09770687936191426,
+    "test_recall_at_50": 0.049850448654037885,
+    "test_recall_at_500": 0.43768693918245266,
+    "validation_ap": 0.775432292486197,
+    "validation_auc": 0.9378735336976722,
+    "validation_brier": 0.0923747687679337,
+    "validation_f1_at_0.5": 0.6538606403013182,
+    "validation_n": 6892,
+    "validation_precision_at_100": 0.99,
+    "validation_precision_at_50": 0.98,
+    "validation_precision_at_500": 0.864,
+    "validation_prevalence": 0.14524085896691816,
+    "validation_recall_at_100": 0.0989010989010989,
+    "validation_recall_at_50": 0.04895104895104895,
+    "validation_recall_at_500": 0.43156843156843155
+  },
+  "model": "graph",
+  "pos_weight": 5.882675986020969,
+  "run_id": "yelp-graph-s73-20260916T2025288718",
+  "seed": 73,
+  "track": "yelp_static"
+}

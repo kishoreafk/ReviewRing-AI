@@ -1,0 +1,35 @@
+# Track A: CARE-GNN YelpChi static benchmark.
+# Node = review, features = 32 processed numeric features, labels are platform
+# filtering proxy labels. Relations: net_rur, net_rtr, net_rsr.
+project: reviewring
+seed: 42
+track: yelp_static
+
+paths:
+  yelp_mat: data/raw/care/YelpChi.mat
+  processed_dir: data/processed/yelp
+  artifacts_dir: artifacts
+
+split:
+  protocol: stratified_random
+  fractions: [0.60, 0.15, 0.10, 0.15]
+
+model:
+  name: graph                          # graph | numeric | prior
+  hidden_dim: 64
+  layers: 2
+  dropout: 0.2
+
+training:
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  batch_size: 512
+  fanout_per_relation: [10, 5]
+  max_epochs: 150
+  patience: 15
+  checkpoint_metric: validation_ap
+  seeds: [17, 42, 73]
+
+evaluation:
+  precision_at_k: [50, 100, 500]
+  recall_at_k: [50, 100, 500]

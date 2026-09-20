@@ -1,0 +1,67 @@
+{
+  "calibration": {
+    "coef": 1.9600364915949062,
+    "fitted": true,
+    "intercept": 0.5760814814475766,
+    "score_kind": "synthetic"
+  },
+  "expert_validation_aps": {
+    "graph": 0.8677451183834076,
+    "text": 0.8062042034322259,
+    "time": 0.8549876489727366
+  },
+  "experts_present": [
+    "text",
+    "graph",
+    "time"
+  ],
+  "frozen_threshold": 0.5927269613428393,
+  "gate_stats": null,
+  "insufficient_data_rows": 0,
+  "metrics": {
+    "test_ap": 0.9546955513520957,
+    "test_auc": 0.9359479129784807,
+    "test_brier": 0.10388191957115915,
+    "test_f1_at_0.5": 0.8574660633484162,
+    "test_n": 1612,
+    "test_precision_at_100": 1.0,
+    "test_precision_at_50": 1.0,
+    "test_prevalence": 0.5738213399503722,
+    "test_recall_at_100": 0.10810810810810811,
+    "test_recall_at_50": 0.05405405405405406,
+    "validation_ap": 0.9236417321520873,
+    "validation_auc": 0.9246131288336231,
+    "validation_brier": 0.11653559393600013,
+    "validation_f1_at_0.5": 0.830923947203017,
+    "validation_n": 1637,
+    "validation_precision_at_100": 0.99,
+    "validation_precision_at_50": 1.0,
+    "validation_prevalence": 0.49114233353695785,
+    "validation_recall_at_100": 0.12313432835820895,
+    "validation_recall_at_50": 0.06218905472636816
+  },
+  "model": "fixed_fusion",
+  "run_id": "amazon-fixed_fusion-s42-20260916T2006253511",
+  "seed": 42,
+  "stress": {
+    "baseline_ap": 0.9546955513520957,
+    "drop_text_30": {
+      "ap": 0.9523862893326945,
+      "auc": 0.9323317203666549
+    },
+    "drop_text_60": {
+      "ap": 0.9463827521758584,
+      "auc": 0.9206947558912624
+    },
+    "drop_time_30": {
+      "ap": 0.9400933536505403,
+      "auc": 0.9221409182107873
+    },
+    "drop_time_60": {
+      "ap": 0.9322023199112777,
+      "auc": 0.9137456233526102
+    },
+    "note": "availability overridden on a random test subset; features unchanged"
+  },
+  "track": "raw_review_replay"
+}

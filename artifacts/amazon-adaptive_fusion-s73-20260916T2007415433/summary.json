@@ -1,0 +1,84 @@
+{
+  "calibration": {
+    "coef": 1.072728668653398,
+    "fitted": true,
+    "intercept": 0.8224048306725413,
+    "score_kind": "synthetic"
+  },
+  "expert_validation_aps": {
+    "graph": 0.8640054589254886,
+    "text": 0.8159554992164273,
+    "time": 0.8478033599661962
+  },
+  "experts_present": [
+    "text",
+    "graph",
+    "time"
+  ],
+  "frozen_threshold": 0.45295156127851083,
+  "gate_stats": {
+    "collapse_max_mean_weight": 0.47944310307502747,
+    "expert_order": [
+      "text",
+      "graph",
+      "time"
+    ],
+    "mean": [
+      0.47944310307502747,
+      0.17321833968162537,
+      0.3473384380340576
+    ],
+    "std": [
+      0.33813199400901794,
+      0.22565743327140808,
+      0.26669949293136597
+    ]
+  },
+  "insufficient_data_rows": 0,
+  "metrics": {
+    "test_ap": 0.9521174305873681,
+    "test_auc": 0.9311121601951297,
+    "test_brier": 0.10473703811048435,
+    "test_f1_at_0.5": 0.8636363636363636,
+    "test_n": 1612,
+    "test_precision_at_100": 1.0,
+    "test_precision_at_50": 1.0,
+    "test_prevalence": 0.5738213399503722,
+    "test_recall_at_100": 0.10810810810810811,
+    "test_recall_at_50": 0.05405405405405406,
+    "validation_ap": 0.9299691485100484,
+    "validation_auc": 0.934351352481291,
+    "validation_brier": 0.10459133309878703,
+    "validation_f1_at_0.5": 0.8300907911802854,
+    "validation_n": 1637,
+    "validation_precision_at_100": 0.98,
+    "validation_precision_at_50": 1.0,
+    "validation_prevalence": 0.49114233353695785,
+    "validation_recall_at_100": 0.12189054726368159,
+    "validation_recall_at_50": 0.06218905472636816
+  },
+  "model": "adaptive_fusion",
+  "run_id": "amazon-adaptive_fusion-s73-20260916T2007415433",
+  "seed": 73,
+  "stress": {
+    "baseline_ap": 0.9521174305873681,
+    "drop_text_30": {
+      "ap": 0.9500284842684696,
+      "auc": 0.9273307368503874
+    },
+    "drop_text_60": {
+      "ap": 0.9499124801050086,
+      "auc": 0.9262889964200007
+    },
+    "drop_time_30": {
+      "ap": 0.9453986451467593,
+      "auc": 0.9232841575199655
+    },
+    "drop_time_60": {
+      "ap": 0.9360959590961427,
+      "auc": 0.9125709115228766
+    },
+    "note": "availability overridden on a random test subset; features unchanged"
+  },
+  "track": "raw_review_replay"
+}

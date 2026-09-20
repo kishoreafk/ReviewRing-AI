@@ -1,0 +1,18 @@
+{
+  "checkpoint": "graph_model.pt",
+  "dropout": 0.2,
+  "fanout": [
+    10,
+    5
+  ],
+  "hidden_dim": 64,
+  "in_dim": 32,
+  "layers": 2,
+  "model_type": "graph",
+  "relation_names": [
+    "net_rur",
+    "net_rtr",
+    "net_rsr"
+  ],
+  "seed": 73
+}

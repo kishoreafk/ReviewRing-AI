@@ -1,0 +1,2 @@
+fedb35a8fa539b27866244d3515a47a76b20080cdacb33112da3458fd2487b42  data/raw/care/YelpChi.mat
+52e08112faa2b8769b35d364cbd3b8ac674ddd56621b171e7531a5a2071f460f  data/raw/amazon/Subscription_Boxes.jsonl
