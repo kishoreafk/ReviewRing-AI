@@ -25,8 +25,11 @@ training:
   weight_decay: 0.0001
   batch_size: 512
   fanout_per_relation: [10, 5]
-  max_epochs: 150
-  patience: 15
+  # Three seeds all reached the epoch-150 cap with validation AP still rising
+  # (best epoch = 149) and patience never firing; raise the budget so early
+  # stopping, not the epoch cap, ends training.
+  max_epochs: 250
+  patience: 20
   checkpoint_metric: validation_ap
   seeds: [17, 42, 73]
 

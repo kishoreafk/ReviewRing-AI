@@ -164,6 +164,7 @@ def _train_pointwise(model, data, kind, config, seed, device):
             best_ap, best_epoch = ap, epoch
             best_state = {k: v.detach().clone() for k, v in model.state_dict().items()}
         if epoch - best_epoch >= patience:
+            logger.info("%s expert early stop at epoch %d (best %d, val AP %.4f)", kind, epoch, best_epoch, best_ap)
             break
     if best_state is not None:
         model.load_state_dict(best_state)
@@ -213,6 +214,7 @@ def _train_graph_expert(data, config, seed, device):
             best_ap, best_epoch = ap, epoch
             best_state = {k: v.detach().clone() for k, v in model.state_dict().items()}
         if epoch - best_epoch >= patience:
+            logger.info("graph expert early stop at epoch %d (best %d, val AP %.4f)", epoch, best_epoch, best_ap)
             break
     if best_state is not None:
         model.load_state_dict(best_state)
@@ -290,6 +292,9 @@ def _train_fusion(fusion, bundle: ExpertBundle, data: TrackBData, include_contex
     ctx_tr = torch.as_tensor(data.context[train_rows])
     ctx_va = torch.as_tensor(data.context[val_rows])
     y_tr = torch.as_tensor(data.y[train_rows], dtype=torch.float32)
+    # class weighting consistent with the experts: replicate BCEWithLogitsLoss
+    # pos_weight semantics (w_pos on positives, 1 on negatives, mean over N)
+    w_pos = _pos_weight(data.y, train_rows, float(config["training"].get("pos_weight_cap", 100.0)))
     y_va = data.y[val_rows]
 
     if isinstance(fusion, AdaptiveGate):
@@ -306,8 +311,10 @@ def _train_fusion(fusion, bundle: ExpertBundle, data: TrackBData, include_contex
         opt.zero_grad()
         mixed = _mix(fusion, probs_tr, reprs_tr if isinstance(fusion, AdaptiveGate) else None,
                      avail_tr, ctx_tr if include_context else None)
-        loss = torch.nn.functional.binary_cross_entropy(mixed.clamp(1e-6, 1 - 1e-6), y_tr)
+        per_elem = torch.nn.functional.binary_cross_entropy(mixed.clamp(1e-6, 1 - 1e-6), y_tr, reduction="none")
+        loss = (per_elem * (y_tr * w_pos + (1.0 - y_tr))).mean()
         loss.backward()
+        torch.nn.utils.clip_grad_norm_(fusion.parameters(), 5.0)
         opt.step()
         fusion.eval()
         with torch.no_grad():
@@ -319,6 +326,7 @@ def _train_fusion(fusion, bundle: ExpertBundle, data: TrackBData, include_contex
             best_ap, best_epoch = ap, epoch
             best_state = {k: v.detach().clone() for k, v in fusion.state_dict().items()}
         if epoch - best_epoch >= patience:
+            logger.info("fusion early stop at epoch %d (best %d, val AP %.4f)", epoch, best_epoch, best_ap)
             break
     if best_state is not None:
         fusion.load_state_dict(best_state)

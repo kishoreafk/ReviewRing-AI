@@ -53,3 +53,7 @@ Thumbs.db
 
 # Bounded local training checks, separate from published results.
 artifacts/dry_runs/
+
+# Isolated experiments and the local notebook selection pointer.
+experiments/
+latest_experiment.json

@@ -1,94 +1,94 @@
-# Running ReviewRing AI on Google Colab (no notebook required)
+# Running ReviewRing AI on Google Colab
 
-The project is a CLI package: clone it from GitHub into Colab and run the files directly.
+Open `colab/ReviewRing_AI_Colab.ipynb`, or run the shell entry point below from an
+updated checkout of https://github.com/kishoreafk/ReviewRing-AI.git.
+The trainers use CPU; MiniLM text embedding can use a GPU if one is available.
+A GPU is optional. Training time depends on the CPU assigned by Colab.
 
-## Option 1 — one-shot (recommended)
+## Use the updated source bundle before the fixes are pushed
+
+Upload `ReviewRing_AI_Colab_source.zip` to `/content`, then run:
 
 ```python
-# Cell 1: clone + run everything (~40 min on CPU, faster on T4)
-!git clone https://github.com/<you>/ReviewRing-AI.git /content/ReviewRing-AI
+import zipfile
+with zipfile.ZipFile('/content/ReviewRing_AI_Colab_source.zip') as bundle:
+    bundle.extractall('/content/ReviewRing-AI')
 %cd /content/ReviewRing-AI
-!bash colab/colab_run.sh
 ```
 
-To use your Kaggle token, upload `kaggle.json` to `/content/` first (Cell 0):
+The bundle contains project source and the notebook, not datasets or credentials.
+Use a fresh folder if you have edited files in an existing Colab checkout.
+The notebook detects existing source and does not automatically pull over it.
+
+## Full experiment
 
 ```python
+import subprocess
+subprocess.run(['bash', '-o', 'pipefail', '-c',
+                'bash colab/colab_run.sh 2>&1 | tee /content/train.log'], check=True)
+```
+
+This installs dependencies, runs tests, downloads datasets, and trains both tracks.
+Failures stop the command and are visible in the cell. Kaggle credentials are optional;
+canonical dataset sources work without them. If needed, upload `kaggle.json` to
+`/content` before running the shell script.
+
+Each experiment saves to a new `experiments/<UTC-id>/` directory:
+
+- `configs/`: resolved YAML settings for each track.
+- `processed/`: that experiment's data and features.
+- `artifacts/<run_id>/`: checkpoints, predictions, metrics and reports.
+- `RESULTS.md`: only this experiment's comparisons.
+- `experiment.json`: seed list, code revision, completion/failure and completed runs.
+
+`latest_experiment.json` points to the newest experiment. Historical artifacts shipped
+with the repository are never added to the new table or selected for evaluation.
+All seven Amazon variants run on seeds 17, 42 and 73, including global fusion and the
+no-context ablation. The fixed review budget stays unchanged; tune it on validation
+in a separate experiment if desired.
+
+## Quick runtime check and individual tracks
+
+```python
+# Setup + download + two-epoch check, including reports and replay:
+subprocess.run(['bash', 'colab/colab_run.sh', '--smoke'], check=True)
+
+# After setup, run one track or use an explicit epoch ceiling:
+subprocess.run(['python', 'scripts/run_experiment.py', '--track', 'yelp', '--epochs', '250'], check=True)
+# subprocess.run(['python', 'scripts/run_experiment.py', '--track', 'amazon'], check=True)
+```
+
+`--smoke` uses seed 42 and two epochs for Yelp graph and Amazon adaptive fusion.
+It is a runtime check, not a model-quality result. `--epochs N` overrides expert and
+fusion epoch limits; patience still comes from the configuration. Without an override,
+the runner uses the track YAML settings. Optional `fusion_max_epochs` and
+`fusion_patience` configure fusion separately. `--prepared-data` copies existing
+`data/processed` inputs into the new experiment for checks without rebuilding features.
+
+For individual CLI stages, pass the experiment's saved config:
+
+```python
+# Example, replacing EXPERIMENT and RUN with values printed by the runner:
+# !python -m reviewring.cli --config EXPERIMENT/configs/amazon_replay.yaml report --run RUN
+```
+
+## Collect and download the current results
+
+```python
+import json, shutil
+from pathlib import Path
 from google.colab import files
-files.upload()   # pick kaggle.json
+experiment = Path(json.loads(Path('latest_experiment.json').read_text())['experiment_dir'])
+subprocess.run(['python', 'scripts/collect_results.py',
+                '--artifacts-dir', str(experiment / 'artifacts'),
+                '--output', str(experiment / 'RESULTS.md')], check=True)
+archive = shutil.make_archive('/content/' + experiment.name, 'zip',
+                              root_dir=experiment.parent, base_dir=experiment.name)
+files.download(archive)
 ```
 
-`colab_run.sh` installs dependencies, downloads the datasets (Kaggle-first with validated
-fallbacks — see `scripts/get_data.py`), trains both tracks, and prints the results table.
-
-## Option 2 — step by step (paste into Colab cells)
-
-```python
-# 1. clone + install
-!git clone https://github.com/<you>/ReviewRing-AI.git /content/ReviewRing-AI
-%cd /content/ReviewRing-AI
-!python -m pip install -q -e .
-!python -m pip install -q -r requirements.txt
-```
-
-```python
-# 2. data
-!python scripts/get_data.py
-```
-
-```python
-# 3. Track A (static benchmark, 3 seeds)
-!python -m reviewring.cli --config configs/yelp_static.yaml prepare
-!python -m reviewring.cli --config configs/yelp_static.yaml split
-!python -m reviewring.cli --config configs/yelp_static.yaml train --model graph --seed 42
-!python -m reviewring.cli --config configs/yelp_static.yaml report --run $(ls -t artifacts | grep yelp-graph | head -1)
-```
-
-```python
-# 4. Track B (raw-review replay: simulate, features, graph, train, evaluate)
-!python -m reviewring.cli --config configs/amazon_replay.yaml prepare
-!python -m reviewring.cli --config configs/amazon_replay.yaml split
-!python -m reviewring.cli --config configs/amazon_replay.yaml simulate
-!python -m reviewring.cli --config configs/amazon_replay.yaml features
-!python -m reviewring.cli --config configs/amazon_replay.yaml graph
-!python -m reviewring.cli --config configs/amazon_replay.yaml train --model adaptive_fusion --seed 42
-```
-
-```python
-# 5. replay, rings, explanations, report
-import subprocess, glob
-run = sorted(glob.glob('artifacts/amazon-adaptive_fusion-s42-*'))[-1].split('/')[-1]
-for cmd in (["replay", "--run", run], ["rings", "--run", run],
-            ["explain", "--run", run], ["report", "--run", run]):
-    subprocess.run(["python", "-m", "reviewring.cli", "--config",
-                    "configs/amazon_replay.yaml"] + cmd, check=True)
-```
-
-```python
-# 6. results table + tests
-!python scripts/collect_results.py
-!python -m pytest tests/ -q
-```
-
-```python
-# 7. (optional) zip artifacts for download
-!cd /content && zip -q -r reviewring_results.zip ReviewRing-AI -x '*/data/raw/*' '*/.git/*'
-from google.colab import files
-files.download('/content/reviewring_results.zip')
-```
-
-## Optional: the investigation UI (runs in Colab too)
-
-```python
-!python -m pip install -q streamlit >/dev/null
-!streamlit run app/streamlit_app.py --server.port 8711 & npx -y localtunnel --port 8711
-```
-
-## Notes
-
-- The code is CPU-only by design (vectorised sampler, no PyG compiled extensions); GPU is unused by the trainers.
-  Track A uses a vectorised relational neighbour sampler.
-- Colab runtimes are ephemeral — keep the final `reviewring_results.zip` or push artifacts
-  back to your repo.
-- `colab_run.sh` is idempotent-safe: rerunning re-trains into NEW run directories
-  (the CLI refuses to overwrite existing runs).
+Save the experiment folder or zip to Drive before the runtime ends. The zip includes
+processed data so later reports use the same inputs. Failed runs retain their finished
+artifacts and record the error in `experiment.json`; rerunning creates a fresh experiment.
+For legacy mixed artifacts, the collector keeps only the latest run per model and seed;
+use isolated experiments when comparing different settings or encoder versions.

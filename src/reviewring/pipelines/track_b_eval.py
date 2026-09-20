@@ -81,6 +81,7 @@ def rings(config: dict, run_id: str) -> dict:
     )
     test_node_ids = set(data.reviews["review_id"].iloc[data.test_idx])
     scores = scores[scores["review_id"].isin(test_node_ids)]
+    scores = scores[np.isfinite(scores["score"])]
 
     top_k_budget = int(rcfg.get("top_k_review_budget", 300))
     candidates = discover_rings(
@@ -111,6 +112,7 @@ def rings(config: dict, run_id: str) -> dict:
 
     out = {
         "n_candidates": len(candidates),
+        "top_k_review_budget": top_k_budget,
         "priority_table": table.to_dict(orient="records"),
         "campaign_matching": {k: v for k, v in match.items() if k != "matches"},
         "matches": match["matches"],
@@ -131,16 +133,25 @@ def rings(config: dict, run_id: str) -> dict:
 
 def explain(config: dict, run_id: str, candidate_id: str | None = None, seed: int = 17) -> dict:
     run_dir, summary = _load_run(config, run_id)
-    data = TrackBData(config)
     rings_path = run_dir / "rings.parquet"
     if not rings_path.exists():
         raise FileNotFoundError("run rings first: reviewring rings --run <run_id>")
     table = pd.read_parquet(rings_path)
+    if table.empty and candidate_id is None:
+        out = {
+            "status": "no_candidates",
+            "run_id": run_id,
+            "reason": "Ring discovery produced no candidates at the configured review budget.",
+        }
+        save_json(run_dir / "explain_status.json", out)
+        logger.info("no ring candidates for %s; explanation skipped", run_id)
+        return out
     if candidate_id is None:
         candidate_id = table.sort_values("priority", ascending=False).iloc[0]["candidate_id"]
     row = table[table["candidate_id"] == candidate_id]
     if not len(row):
         raise ValueError(f"candidate {candidate_id} not in run rings")
+    data = TrackBData(config)
 
     # re-derive the candidate via deterministic discovery (same seed/threshold
     # policy as the rings stage), so masked edges map to real review records
@@ -148,6 +159,7 @@ def explain(config: dict, run_id: str, candidate_id: str | None = None, seed: in
     test_node_ids = set(data.reviews["review_id"].iloc[data.test_idx])
     scores = pd.DataFrame({"review_id": preds["review_id"], "score": preds["score"]})
     scores = scores[scores["review_id"].isin(test_node_ids)]
+    scores = scores[np.isfinite(scores["score"])]
     rcfg = config.get("rings", {})
     top_k_budget = int(rcfg.get("top_k_review_budget", 300))
     candidates = discover_rings(
@@ -157,6 +169,8 @@ def explain(config: dict, run_id: str, candidate_id: str | None = None, seed: in
         top_k=top_k_budget,
         min_accounts=int(rcfg.get("min_accounts", 3)),
         min_targets=int(rcfg.get("min_targets", 2)),
+        top_m_reviews=int(rcfg.get("top_m_reviews", 5)),
+        priority_weights=tuple(rcfg.get("priority_weights", [0.5, 0.3, 0.2])),
         seed=int(config["seed"]),
     )
     match = [c for c in candidates if c.candidate_id == candidate_id]
@@ -226,6 +240,7 @@ def explain(config: dict, run_id: str, candidate_id: str | None = None, seed: in
         },
     }
     save_json(run_dir / f"explain_{candidate_id}.json", out)
+    save_json(run_dir / "explain_status.json", {"status": "completed", "candidate_id": candidate_id})
     logger.info("explained %s: removal effect %.4f", candidate_id, result.removal_effect)
     return out
 
@@ -254,14 +269,17 @@ def report(config: dict, run_id: str) -> dict:
 
     run_dir, summary = _load_run(config, run_id)
     preds = pd.read_parquet(run_dir / "test_predictions.parquet")
-    # join by review_id (mapping-integrity rule): predictions carry their IDs,
-    # so reports never depend on node_idx alignment with later data rebuilds
-    labels_by_id = pd.Series(
-        pd.read_parquet(Path(config["paths"]["processed_dir"]) / "labels.parquet")["label"].to_numpy(dtype=float),
-        index=pd.read_parquet(Path(config["paths"]["processed_dir"]) / "labels.parquet")["review_id"],
-    )
-    preds["label_known"] = preds["review_id"].map(labels_by_id)
-    labelled = preds[preds["label_known"].notna()]
+    # Labels saved alongside predictions describe the dataset actually scored.
+    # A later prepare/simulate run must not change an existing run's report.
+    if "label" in preds.columns:
+        preds["label_known"] = preds["label"]
+        label_source = "saved predictions"
+    else:
+        logger.warning("legacy run %s has no saved labels; using current labels by review_id", run_id)
+        labels = pd.read_parquet(Path(config["paths"]["processed_dir"]) / "labels.parquet")
+        preds["label_known"] = preds["review_id"].map(labels.set_index("review_id")["label"])
+        label_source = "current processed labels (legacy run fallback)"
+    labelled = preds[preds["label_known"].isin([0, 1]) & np.isfinite(preds["score"])]
     y = labelled["label_known"].to_numpy()
     p = labelled["score"].to_numpy()
 
@@ -335,6 +353,8 @@ def report(config: dict, run_id: str) -> dict:
     md.append(f"- Model: `{summary['model']}` (seed {summary['seed']})")
     md.append(f"- Experts: {summary.get('experts_present')}")
     md.append(f"- Frozen threshold: {summary.get('frozen_threshold'):.3f}")
+    md.append(f"- Report labels: {label_source}")
+    md.append(f"- Labelled reviews with finite scores: {len(labelled)}")
     md.append("")
     md.append("## Test metrics (labelled synthetic rows only)")
     md.append("")
@@ -365,13 +385,17 @@ def report(config: dict, run_id: str) -> dict:
         for k in ("campaign_precision", "campaign_recall", "member_recovery", "fragmentation", "merging"):
             if cm.get(k) is not None:
                 md.append(f"- {k}: {cm[k]:.3f}" if isinstance(cm[k], float) else f"- {k}: {cm[k]}")
-    explain_files = sorted(run_dir.glob("explain_*.json"))
+    explain_files = sorted(p for p in run_dir.glob("explain_*.json") if p.name != "explain_status.json")
     if explain_files:
         ex = json.loads(explain_files[0].read_text())
         md += ["", "## Explanation (masked graph messages)"]
         m = ex["masking"]
         for k, v in m.items():
             md.append(f"- {k}: {v}")
+    elif (run_dir / "explain_status.json").exists():
+        status = json.loads((run_dir / "explain_status.json").read_text())
+        if status.get("status") == "no_candidates":
+            md += ["", "## Explanation", "- No ring candidates at the configured review budget; explanation skipped."]
     md += ["", "## Boundary"]
     md.append(
         "- Track B results are measured on a controlled simulator with known "

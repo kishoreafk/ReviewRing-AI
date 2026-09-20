@@ -1,35 +1,70 @@
-"""Collect all run summaries into docs/RESULTS.md with seed statistics."""
+"""Collect the latest run per model/seed, without counting reruns as new seeds."""
 from __future__ import annotations
 
-import glob
+import argparse
 import json
+import math
 from pathlib import Path
 
 import numpy as np
 
 
-def collect(track_filter: str) -> dict:
-    """run_id -> summary for one track."""
-    out = {}
-    for path in sorted(glob.glob("artifacts/*/summary.json")):
-        s = json.loads(Path(path).read_text())
+def latest_runs(runs: list[dict]) -> dict:
+    """Select one run per track/model/seed using the timestamped run ID.
+
+    Run IDs sort chronologically within each model/seed. Do not use filesystem
+    modification times: copying artifacts into Colab changes those timestamps.
+    """
+    selected = {}
+    for summary in sorted(runs, key=lambda s: s["run_id"]):
+        key = (summary["track"], summary["model"], summary["seed"])
+        selected[key] = summary
+    return {s["run_id"]: s for s in selected.values()}
+
+
+def collect(track_filter: str, artifacts_dir: str | Path = "artifacts") -> dict:
+    """Return the latest run_id -> summary for each model/seed in one track."""
+    summaries = []
+    for path in sorted(Path(artifacts_dir).glob("*/summary.json")):
+        s = json.loads(path.read_text(encoding="utf-8"))
         if s.get("track") == track_filter:
-            out[s["run_id"]] = s
-    return out
+            summaries.append(s)
+    return latest_runs(summaries)
+
+
+def finite_number(value: object) -> float | None:
+    """Undefined metrics are absent, never zeros or NaNs in an aggregate."""
+    if isinstance(value, bool) or not isinstance(value, (int, float)):
+        return None
+    return float(value) if math.isfinite(value) else None
+
+
+def metric_values(runs: list[dict], *keys: str) -> list[float]:
+    values = []
+    for run in runs:
+        value = run
+        for key in keys:
+            value = value.get(key) if isinstance(value, dict) else None
+        number = finite_number(value)
+        if number is not None:
+            values.append(number)
+    return values
+
+
+def values_mean_std(values: list[float]) -> tuple[float | None, float | None]:
+    if not values:
+        return None, None
+    # Sample SD across independent seeds; a single seed has no estimated SD.
+    std = float(np.std(values, ddof=1)) if len(values) >= 2 else None
+    return float(np.mean(values)), std
 
 
 def mean_std(runs: list[dict], key: str) -> tuple[float | None, float | None]:
-    vals = [r["metrics"].get(key) for r in runs]
-    vals = [v for v in vals if v is not None]
-    if not vals:
-        return None, None
-    # sample std requires >= 2 seeds; single-seed rows report no std
-    std = float(np.std(vals, ddof=1)) if len(vals) >= 2 else None
-    return float(np.mean(vals)), std
+    return values_mean_std(metric_values(runs, "metrics", key))
 
 
 def fmt(v: float | None, digits: int = 4) -> str:
-    return "—" if v is None else f"{v:.{digits}f}"
+    return "—" if finite_number(v) is None else f"{v:.{digits}f}"
 
 
 def fmt_pair(mean: float | None, std: float | None, digits: int = 4) -> str:
@@ -40,58 +75,91 @@ def fmt_pair(mean: float | None, std: float | None, digits: int = 4) -> str:
     return f"{mean:.{digits}f} ± {std:.{digits}f}"
 
 
+def metric_cell(group: list[dict], *keys: str, with_std: bool = False) -> str:
+    values = metric_values(group, *keys)
+    mean, std = values_mean_std(values)
+    result = fmt_pair(mean, std) if with_std else fmt(mean)
+    if values and len(values) < len(group):
+        result += f" (n={len(values)}/{len(group)} valid seeds)"
+    return result
+
+
+def seed_cell(group: list[dict]) -> str:
+    seeds = sorted({s["seed"] for s in group})
+    return f"{len(seeds)} ({', '.join(map(str, seeds))})" if seeds else "0"
+
+
+def by_model(runs: dict) -> dict[str, list[dict]]:
+    groups: dict[str, list[dict]] = {}
+    for summary in latest_runs(list(runs.values())).values():
+        groups.setdefault(summary["model"], []).append(summary)
+    return groups
+
+
 def track_a_table(runs: dict) -> str:
-    by_model: dict[str, list] = {}
-    for s in runs.values():
-        by_model.setdefault(s["model"], []).append(s)
+    groups = by_model(runs)
     lines = [
-        "| Model | Seeds | Test AP (mean ± std) | Test ROC-AUC | P@100 | R@100 |",
+        "| Model | Seeds | Test AP (mean ± sample SD) | Test ROC-AUC | P@100 | R@100 |",
         "|---|---|---|---|---|---|",
     ]
     for model in ("prior", "numeric", "graph"):
-        group = by_model.get(model, [])
-        ap_m, ap_s = mean_std(group, "test_ap")
-        auc_m, _ = mean_std(group, "test_auc")
-        p100, _ = mean_std(group, "test_precision_at_100")
-        r100, _ = mean_std(group, "test_recall_at_100")
+        group = groups.get(model, [])
         lines.append(
-            f"| {model} | {len(group)} | {fmt_pair(ap_m, ap_s)} | {fmt(auc_m)} | {fmt(p100)} | {fmt(r100)} |"
+            f"| {model} | {seed_cell(group)} | {metric_cell(group, 'metrics', 'test_ap', with_std=True)} "
+            f"| {metric_cell(group, 'metrics', 'test_auc')} | {metric_cell(group, 'metrics', 'test_precision_at_100')} "
+            f"| {metric_cell(group, 'metrics', 'test_recall_at_100')} |"
         )
     return "\n".join(lines)
 
 
 def track_b_table(runs: dict) -> str:
-    by_model: dict[str, list] = {}
-    for s in runs.values():
-        by_model.setdefault(s["model"], []).append(s)
+    groups = by_model(runs)
     order = ["text", "time", "graph", "fixed_fusion", "global_fusion", "adaptive_fusion", "adaptive_fusion_noctx"]
     lines = [
-        "| Model | Seeds | Test AP (mean ± std) | Val AP | drop_text_60 AP | drop_time_60 AP |",
+        "| Model | Seeds | Test AP (mean ± sample SD) | Val AP | drop_text_60 AP | drop_time_60 AP |",
         "|---|---|---|---|---|---|",
     ]
     for model in order:
-        group = by_model.get(model, [])
+        group = groups.get(model, [])
         if not group:
             continue
-        ap_m, ap_s = mean_std(group, "test_ap")
-        vap_m, _ = mean_std(group, "validation_ap")
-        dtext = [g["stress"]["drop_text_60"]["ap"] for g in group if g.get("stress", {}).get("drop_text_60")]
-        dtime = [g["stress"]["drop_time_60"]["ap"] for g in group if g.get("stress", {}).get("drop_time_60")]
-        dtext_s = fmt(float(np.mean(dtext))) if dtext else "n/a"
-        dtime_s = fmt(float(np.mean(dtime))) if dtime else "n/a"
         lines.append(
-            f"| {model} | {len(group)} | {fmt_pair(ap_m, ap_s)} | {fmt(vap_m)} | {dtext_s} | {dtime_s} |"
+            f"| {model} | {seed_cell(group)} | {metric_cell(group, 'metrics', 'test_ap', with_std=True)} "
+            f"| {metric_cell(group, 'metrics', 'validation_ap')} | {metric_cell(group, 'stress', 'drop_text_60', 'ap')} "
+            f"| {metric_cell(group, 'stress', 'drop_time_60', 'ap')} |"
         )
     return "\n".join(lines)
 
 
-def main() -> None:
-    a = collect("yelp_static")
-    b = collect("raw_review_replay")
+def paired_ap_deltas(runs: dict) -> tuple[list[int], list[float]]:
+    groups = by_model(runs)
+    fixed = {s["seed"]: s for s in groups.get("fixed_fusion", [])}
+    adaptive = {s["seed"]: s for s in groups.get("adaptive_fusion", [])}
+    seeds, deltas = [], []
+    for seed in sorted(fixed.keys() & adaptive.keys()):
+        fixed_ap = metric_values([fixed[seed]], "metrics", "test_ap")
+        adaptive_ap = metric_values([adaptive[seed]], "metrics", "test_ap")
+        if fixed_ap and adaptive_ap:
+            seeds.append(seed)
+            deltas.append(adaptive_ap[0] - fixed_ap[0])
+    return seeds, deltas
+
+
+def build_report(artifacts_dir: str | Path = "artifacts") -> str:
+    artifacts_dir = Path(artifacts_dir)
+    if not artifacts_dir.is_dir():
+        raise FileNotFoundError(f"Artifacts directory does not exist: {artifacts_dir}")
+    a = collect("yelp_static", artifacts_dir)
+    b = collect("raw_review_replay", artifacts_dir)
 
     md = ["# ReviewRing AI - measured results", ""]
-    md.append("All numbers come from saved runs under `artifacts/` (summary.json per run).")
-    md.append("Mean ± std over seeds [17, 42, 73] where three seeds exist; single-seed ablations are labelled as such.")
+    md.append(f"All numbers come from saved runs under `{artifacts_dir.as_posix()}` (summary.json per run).")
+    md.append("Selection: keep the lexicographically latest timestamped run ID for each (track, model, seed). "
+              "Repeated runs of one seed count once; selection never uses test performance.")
+    md.append("Use an isolated artifacts directory for each experiment: latest-per-seed selection alone does not "
+              "prove historical runs share the same code, data, split, or settings.")
+    md.append("The Seeds column lists distinct selected seeds. Mean ± sample standard deviation uses finite metrics only; "
+              "partial coverage is labelled with n, missing metrics are —, and single-seed results have no estimated SD.")
     md.append("")
 
     md.append("## Track A: YelpChi static benchmark (proxy labels, transductive)")
@@ -105,21 +173,12 @@ def main() -> None:
     md.append(track_b_table(b))
 
     # principal comparison paired deltas
-    fixed = [s for s in b.values() if s["model"] == "fixed_fusion"]
-    adaptive = [s for s in b.values() if s["model"] == "adaptive_fusion"]
-    if fixed and adaptive:
-        by_seed_fixed = {s["seed"]: s["metrics"]["test_ap"] for s in fixed}
-        deltas = []
-        for s in adaptive:
-            if s["seed"] in by_seed_fixed:
-                deltas.append(s["metrics"]["test_ap"] - by_seed_fixed[s["seed"]])
-        if deltas:
-            md.append("")
-            md.append(
-                f"**Principal comparison (adaptive - fixed, paired by seed):** "
-                f"{float(np.mean(deltas)):+.4f} ± {float(np.std(deltas)):.4f} AP over seeds "
-                f"{[s['seed'] for s in adaptive if s['seed'] in by_seed_fixed]}."
-            )
+    seeds, deltas = paired_ap_deltas(b)
+    if deltas:
+        mean, std = values_mean_std(deltas)
+        spread = f" ± {std:.4f}" if std is not None else " (single paired seed; SD unavailable)"
+        md += ["", f"**Principal comparison (adaptive - fixed, paired by seed):** "
+               f"{mean:+.4f}{spread} AP over {len(seeds)} distinct paired seeds {seeds}."]
 
     # main run extras
     main = sorted(
@@ -129,30 +188,47 @@ def main() -> None:
     if main:
         run_id = main[-1]["run_id"]
         md += ["", f"## Main run details (`{run_id}`)", ""]
-        rep_dir = Path("artifacts") / run_id
+        rep_dir = artifacts_dir / run_id
         if (rep_dir / "replay.json").exists():
-            rep = json.loads((rep_dir / "replay.json").read_text())
+            rep = json.loads((rep_dir / "replay.json").read_text(encoding="utf-8"))
             md.append(f"- Daily replay: planted campaigns detected {rep['detected_campaigns']}/{rep['planted_campaigns']}")
             for k in ("recall_at_1d", "recall_at_7d", "recall_at_30d", "mean_delay_detected_only"):
-                if rep.get(k) is not None:
+                if finite_number(rep.get(k)) is not None:
                     md.append(f"- {k}: {rep[k]:.2f}")
         if (rep_dir / "rings_eval.json").exists():
-            rr = json.loads((rep_dir / "rings_eval.json").read_text())
+            rr = json.loads((rep_dir / "rings_eval.json").read_text(encoding="utf-8"))
             cm = rr["campaign_matching"]
-            md.append(f"- Ring candidates: {rr['n_candidates']} (top-{300} review budget, predeclared)")
+            md.append(f"- Ring candidates: {rr['n_candidates']} (review budget recorded in the run configuration)")
             md.append(f"- Campaign precision/recall: {fmt(cm.get('campaign_precision'))} / {fmt(cm.get('campaign_recall'))}")
             md.append(f"- Matched-member mean IoU: {fmt(cm.get('mean_iou'))}")
             md.append(f"- Fragmentation/merging: {fmt(cm.get('fragmentation'), 2)} / {fmt(cm.get('merging'), 2)}")
 
+    md += ["", "## Selected runs", ""]
+    md += [f"- `{run_id}`" for run_id in sorted([*a, *b])]
+    if not a and not b:
+        md.append("No completed training summaries found.")
     md += [
         "",
         "## Boundaries",
+        "",
         "- Track B numbers describe the controlled simulator (known campaign membership), not real-world fraud performance.",
         "- Unmatched alerts in unlabelled Amazon background are unverified, not false positives.",
         "- Gate weights, stress tests and per-run figures are inside each run directory (`report.md`, `figures/`).",
     ]
-    Path("docs/RESULTS.md").write_text("\n".join(md) + "\n")
-    print("\n".join(md))
+    return "\n".join(md) + "\n"
+
+
+def main(argv: list[str] | None = None) -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--artifacts-dir", type=Path, default=Path("artifacts"),
+                        help="Directory containing run subdirectories (default: artifacts)")
+    parser.add_argument("--output", type=Path, default=Path("docs/RESULTS.md"),
+                        help="Markdown output path (default: docs/RESULTS.md)")
+    args = parser.parse_args(argv)
+    report = build_report(args.artifacts_dir)
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    args.output.write_text(report, encoding="utf-8")
+    print(report, end="")
 
 
 if __name__ == "__main__":
