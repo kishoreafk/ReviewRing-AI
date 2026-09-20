@@ -77,10 +77,9 @@ class AdaptiveGate(nn.Module):
         context: torch.Tensor,  # [B, n_context]
     ) -> tuple[torch.Tensor, torch.Tensor]:
         """Returns (gate_weights [B, K], gate_logits [B, K])."""
-        batch = expert_reprs.shape[0]
         flat = torch.cat(
             [
-                expert_reprs.reshape(batch, -1),
+                expert_reprs.flatten(start_dim=1),
                 availability.float(),
                 context.float(),
             ],

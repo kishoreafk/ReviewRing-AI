@@ -21,6 +21,11 @@ class PlattCalibrator:
     def fit(self, logits: np.ndarray, labels: np.ndarray) -> PlattCalibrator:
         labels = np.asarray(labels)
         logits = np.asarray(logits, dtype=np.float64)
+        if logits.shape != labels.shape:
+            raise ValueError("calibration logits and labels must have matching shapes")
+        valid = np.isfinite(logits) & np.isin(labels, [0, 1])
+        logits, labels = logits[valid], labels[valid]
+        self.clf = None
         logits = np.clip(logits, -30.0, 30.0).reshape(-1, 1)
         if len(np.unique(labels)) < 2:
             # cannot fit a two-class calibrator; keep raw scores
@@ -32,12 +37,19 @@ class PlattCalibrator:
         return self
 
     def predict_proba(self, logits: np.ndarray) -> np.ndarray:
-        logits = np.clip(np.asarray(logits, dtype=np.float64), -30.0, 30.0).reshape(-1, 1)
+        logits = np.asarray(logits, dtype=np.float64).reshape(-1)
+        valid = np.isfinite(logits)
+        result = np.full(logits.shape, np.nan)
+        logits = np.clip(logits[valid], -30.0, 30.0).reshape(-1, 1)
+        if not valid.any():
+            return result
         if not self.fitted or self.clf is None:
             from scipy.special import expit
 
-            return expit(logits.reshape(-1))
-        return self.clf.predict_proba(logits)[:, 1]
+            result[valid] = expit(logits.reshape(-1))
+        else:
+            result[valid] = self.clf.predict_proba(logits)[:, 1]
+        return result
 
     def to_dict(self) -> dict:
         out = {"fitted": self.fitted, "score_kind": self.score_kind}

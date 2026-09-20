@@ -30,6 +30,7 @@ from reviewring.graph.build import RELATION_NAMES
 from reviewring.models.experts import GraphExpert, TextExpert, TimeExpert
 from reviewring.models.fusion import EXPERT_NAMES, AdaptiveGate, FixedFusion, GlobalFusion
 from reviewring.training.calibrate import PlattCalibrator
+from reviewring.training.train import pos_weight
 from reviewring.utils.runtime import artifact_dir, save_json, seed_everything, sha256_file, stable_json
 
 logger = logging.getLogger(__name__)
@@ -105,10 +106,7 @@ class TrackBData:
 # ---------------------------------------------------------------------------
 
 def _pos_weight(y: np.ndarray, rows: np.ndarray, cap: float = 100.0) -> float:
-    yp = y[rows]
-    n_pos = max(float((yp == 1).sum()), 1.0)
-    n_neg = float((yp == 0).sum())
-    return float(min(n_neg / n_pos, cap))
+    return pos_weight(y[rows], cap=cap)
 
 
 def _train_text_expert(data, config, seed, device):
@@ -130,11 +128,12 @@ def _train_pointwise(model, data, kind, config, seed, device):
     epochs = int(config["training"].get("max_epochs", 80))
     patience = int(config["training"].get("patience", 10))
     opt = torch.optim.AdamW(model.parameters(), lr=lr, weight_decay=wd)
-    w_pos = _pos_weight(data.y, train_rows)
+    w_pos = _pos_weight(data.y, train_rows, float(config["training"].get("pos_weight_cap", 100.0)))
     x_all = data.embeddings if kind == "text" else data.history
     x_t = torch.as_tensor(x_all, dtype=torch.float32)
     m_t = torch.as_tensor(data.history_missing.astype(np.float32)) if kind == "time" else None
     y_t = torch.as_tensor(data.y[train_rows], dtype=torch.float32)
+    batch_size = int(config["training"].get("batch_size", 256))
     rng = np.random.default_rng(seed)
     best_ap, best_state, best_epoch = -1.0, None, 0
     history = []
@@ -142,11 +141,11 @@ def _train_pointwise(model, data, kind, config, seed, device):
         model.train()
         order = rng.permutation(len(train_rows))
         losses = []
-        for start in range(0, len(train_rows), 256):
-            rows = train_rows[order[start : start + 256]]
+        for start in range(0, len(train_rows), batch_size):
+            rows = train_rows[order[start : start + batch_size]]
             opt.zero_grad()
             _, logits = model(x_t[rows]) if m_t is None else model(x_t[rows], m_t[rows])
-            target = y_t[order[start : start + 256]]
+            target = y_t[order[start : start + batch_size]]
             loss = torch.nn.functional.binary_cross_entropy_with_logits(
                 logits, target, pos_weight=torch.tensor(w_pos)
             )
@@ -191,7 +190,7 @@ def _train_graph_expert(data, config, seed, device):
     edges = {k: torch.as_tensor(v, dtype=torch.long) for k, v in data.edge_index_by_relation.items()}
     n = x_all.shape[0]
     y_t = torch.as_tensor(data.y[train_rows], dtype=torch.float32)
-    w_pos = _pos_weight(data.y, train_rows)
+    w_pos = _pos_weight(data.y, train_rows, float(config["training"].get("pos_weight_cap", 100.0)))
     best_ap, best_state, best_epoch = -1.0, None, 0
     history = []
     for epoch in range(epochs):
@@ -275,6 +274,10 @@ def _stack(outputs: dict, order: list[str]):
 def _train_fusion(fusion, bundle: ExpertBundle, data: TrackBData, include_context: bool, config):
     train_rows = data.labelled_rows(data.train_idx)
     val_rows = data.labelled_rows(data.val_idx)
+    train_rows = train_rows[bundle.availability(train_rows).sum(axis=1) > 0]
+    val_rows = val_rows[bundle.availability(val_rows).sum(axis=1) > 0]
+    if not len(train_rows) or not len(val_rows):
+        raise ValueError("fusion requires labelled training and validation rows with available experts")
     order = bundle.experts_present
     out_tr = bundle.outputs(train_rows)
     out_va = bundle.outputs(val_rows)
@@ -293,10 +296,12 @@ def _train_fusion(fusion, bundle: ExpertBundle, data: TrackBData, include_contex
         reprs_tr, _ = _stack(out_tr, order)
         reprs_va, _ = _stack(out_va, order)
     lr = float(config["training"].get("learning_rate", 1e-3))
-    opt = torch.optim.AdamW(fusion.parameters(), lr=lr, weight_decay=1e-4)
+    opt = torch.optim.AdamW(fusion.parameters(), lr=lr, weight_decay=float(config["training"].get("weight_decay", 1e-4)))
     best_ap, best_state, best_epoch = -1.0, None, 0
     history = []
-    for epoch in range(300):
+    epochs = int(config["training"].get("fusion_max_epochs", config["training"].get("max_epochs", 300)))
+    patience = int(config["training"].get("fusion_patience", config["training"].get("patience", 20)))
+    for epoch in range(epochs):
         fusion.train()
         opt.zero_grad()
         mixed = _mix(fusion, probs_tr, reprs_tr if isinstance(fusion, AdaptiveGate) else None,
@@ -313,7 +318,7 @@ def _train_fusion(fusion, bundle: ExpertBundle, data: TrackBData, include_contex
         if ap > best_ap:
             best_ap, best_epoch = ap, epoch
             best_state = {k: v.detach().clone() for k, v in fusion.state_dict().items()}
-        if epoch - best_epoch >= 20:
+        if epoch - best_epoch >= patience:
             break
     if best_state is not None:
         fusion.load_state_dict(best_state)
@@ -345,7 +350,9 @@ def _fusion_predict(fusion, bundle: ExpertBundle, rows: np.ndarray, include_cont
         weights = None
         if isinstance(fusion, AdaptiveGate):
             weights, _ = fusion(reprs, avail, ctx if include_context else torch.zeros_like(ctx))
-    return mixed.numpy(), weights.numpy() if weights is not None else None
+    probs = mixed.numpy().copy()
+    probs[avail.sum(dim=1).numpy() == 0] = np.nan
+    return probs, weights.numpy() if weights is not None else None
 
 
 # ---------------------------------------------------------------------------
@@ -361,7 +368,13 @@ def train(config: dict, model: str, seed: int | None = None) -> dict:
         raise ValueError(f"unknown Track B model '{model}' (expected one of {sorted(VALID_MODELS)})")
     seed = int(seed if seed is not None else config["seed"])
     seed_everything(seed)
+    for key in ("batch_size", "max_epochs", "patience", "fusion_max_epochs", "fusion_patience"):
+        if key in config["training"] and int(config["training"][key]) < 1:
+            raise ValueError(f"training.{key} must be positive")
     data = TrackBData(config)
+    for role, rows in (("train", data.train_idx), ("validation", data.val_idx)):
+        if not len(data.labelled_rows(rows)):
+            raise ValueError(f"{role} partition has no labelled rows")
     device = "cpu"
     artifacts = Path(config["paths"].get("artifacts_dir", "artifacts"))
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")[:-3]
@@ -479,12 +492,15 @@ def train(config: dict, model: str, seed: int | None = None) -> dict:
     val_logits_all = np.log(np.clip(val_probs, 1e-6, 1 - 1e-6) / (1 - np.clip(val_probs, 1e-6, 1 - 1e-6)))
     val_probs_cal_all = calibrator.predict_proba(val_logits_all)
     val_probs_cal_labelled = np.array([val_probs_cal_all[pos_of[r]] for r in val_labelled])
-    if len(val_labelled) and len(np.unique(data.y[val_labelled])) > 1:
-        threshold, _ = M.best_f1_threshold(data.y[val_labelled], val_probs_cal_labelled)
+    valid_val = np.isfinite(val_probs_cal_labelled)
+    if len(np.unique(data.y[val_labelled][valid_val])) > 1:
+        threshold, _ = M.best_f1_threshold(data.y[val_labelled][valid_val], val_probs_cal_labelled[valid_val])
     else:
         threshold = 0.5
     gate_stats = None
     if gate_weights_test is not None:
+        gate_weights_test = gate_weights_test[np.isfinite(gate_weights_test).all(axis=1)]
+    if gate_weights_test is not None and len(gate_weights_test):
         gate_stats = {
             "mean": gate_weights_test.mean(axis=0).tolist(),
             "std": gate_weights_test.std(axis=0).tolist(),
@@ -500,17 +516,18 @@ def train(config: dict, model: str, seed: int | None = None) -> dict:
     if fusion is not None and len(bundle.experts_present) > 1:
         rng_stress = np.random.default_rng(seed + 77)
         pos_of_test = {node: i for i, node in enumerate(test_idx)}
-        for modality in set(bundle.experts_present) & {"text", "time"}:
+        for modality in sorted(set(bundle.experts_present) & {"text", "time"}):
             for frac in (0.3, 0.6):
                 override = data.availability[test_idx].copy()
                 drop = rng_stress.random(len(test_idx)) < frac
                 override[drop, EXPERT_NAMES.index(modality)] = 0.0
                 probs_s, _ = _fusion_predict(fusion, bundle, test_idx, include_context, availability_override=override)
                 probs_s_labelled = np.array([probs_s[pos_of_test[r]] for r in test_labelled])
+                valid_stress = np.isfinite(probs_s_labelled)
                 key = f"drop_{modality}_{int(frac * 100)}"
                 stress[key] = {
-                    "ap": M.average_precision(data.y[test_labelled], probs_s_labelled),
-                    "auc": M.roc_auc(data.y[test_labelled], probs_s_labelled),
+                    "ap": M.average_precision(data.y[test_labelled][valid_stress], probs_s_labelled[valid_stress]),
+                    "auc": M.roc_auc(data.y[test_labelled][valid_stress], probs_s_labelled[valid_stress]),
                 }
         stress["baseline_ap"] = test_metrics["test_ap"]
         stress["note"] = "availability overridden on a random test subset; features unchanged"
@@ -579,7 +596,12 @@ def train(config: dict, model: str, seed: int | None = None) -> dict:
 
 
 def _classification_metrics(y, probs, config, prefix):
+    y, probs = np.asarray(y), np.asarray(probs)
+    valid = np.isfinite(probs) & np.isin(y, [0, 1])
+    excluded = int((~valid).sum())
+    y, probs = y[valid], probs[valid]
     out = {
+        f"{prefix}n_excluded": excluded,
         f"{prefix}ap": M.average_precision(y, probs),
         f"{prefix}auc": M.roc_auc(y, probs),
         f"{prefix}brier": M.brier_score(y, probs) if len(y) else None,

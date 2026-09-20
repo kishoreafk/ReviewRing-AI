@@ -9,6 +9,7 @@ hidden from training; results are NOT claims about future events.
 from __future__ import annotations
 
 import logging
+import json
 import platform
 from datetime import datetime, timezone
 from pathlib import Path
@@ -108,6 +109,18 @@ def _load_processed(config: dict):
 def _new_run_id(config: dict, model: str, seed: int) -> str:
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")[:-3]
     return f"yelp-{model}-s{seed}-{stamp}"
+
+
+def _source_provenance(config: dict) -> dict:
+    """Allow training from prepared data without requiring the raw download."""
+    raw = Path(config["paths"]["yelp_mat"])
+    if raw.is_file():
+        return {"data_sha256": sha256_file(raw), "data_hash_source": "raw_file"}
+    manifest = Path(config["paths"]["processed_dir"]) / MANIFEST_FILENAME
+    recorded = json.loads(manifest.read_text(encoding="utf-8")) if manifest.is_file() else {}
+    digest = recorded.get("source", {}).get("sha256")
+    logger.warning("raw Yelp file unavailable; using source hash from preparation manifest")
+    return {"data_sha256": digest, "data_hash_source": "prepare_manifest" if digest else "unavailable"}
 
 
 def _classification_metrics(y: np.ndarray, probs: np.ndarray, config: dict, prefix: str) -> dict:
@@ -230,7 +243,8 @@ def train(config: dict, model: str, seed: int | None = None) -> dict:
             "model": model,
             "seed": seed,
             "config_resolved": config,
-            "data_sha256": sha256_file(Path(config["paths"]["yelp_mat"])),
+            **_source_provenance(config),
+            "processed_features_sha256": sha256_file(Path(config["paths"]["processed_dir"]) / "features.npy"),
             "split_hash": stable_json(role_indices(splits, "train")[:1000].tolist()),
             "torch": _torch_version(),
             "python": platform.python_version(),
@@ -274,6 +288,8 @@ def _train_graph(config, features, relations, train_idx, val_idx, test_idx, y, s
     n_nodes = features.shape[0]
     sampler = RelationalNeighborSampler(relations, n_nodes, seed=seed)
     fanouts = list(config["training"].get("fanout_per_relation", [10, 5]))
+    if len(fanouts) != int(config["model"]["layers"]) or any(int(f) < 1 for f in fanouts):
+        raise ValueError("fanout_per_relation must contain one positive fanout per model layer")
     batch_size = int(config["training"].get("batch_size", 512))
     feat_t = torch.as_tensor(features, dtype=torch.float32)
 
@@ -299,11 +315,11 @@ def _train_graph(config, features, relations, train_idx, val_idx, test_idx, y, s
         model.train()
         order = rng_train.permutation(len(train_idx))
         losses = []
+        rng = np.random.default_rng(seed * 7919 + epoch)
         for start in range(0, len(train_idx), batch_size):
             batch = train_idx[order[start : start + batch_size]]
             optimizer.zero_grad()
             # per-epoch deterministic training sampling
-            rng = np.random.default_rng(seed * 7919 + epoch)
             layers = build_layer_stack(sampler, batch, fanouts, rng)
             x = feat_t[layers[0].all_local_nodes]
             for conv, adj in zip(model.convs, layers):
